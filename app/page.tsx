@@ -1,7 +1,13 @@
-import Image from "next/image";
+import Hero from '@/app/components/hero'
+import Services from './components/services';
+import Contact from './components/contact';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">main-page</main>
+    <main >
+    <Hero />
+    <Services />
+    <Contact />
+    </main>
   );
 }

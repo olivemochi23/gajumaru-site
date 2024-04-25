@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="relative">
-        <header className="bg-transparent h-16 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
-          <div className="px-8 flex items-center">
+        <header className="bg-transparent h-16 flex items-center justify- font-bold absolute top-0 left-0 right-0 z-10">
+          <div className="text-xl flex items-center">
             <Link href="/">
               <Image
                 src="/ガジュマルロゴ.png"
@@ -25,7 +25,7 @@ export default function Home() {
                 height={50}
               />
             </Link>
-            <h1 className="ml-4">株式会社ガジュマル</h1>
+            <h1 className="text-[10px]">株式会社ガジュマル</h1>
           </div>
           <ul className="flex gap-4 font-bold">
             {navItems.map((item) => (

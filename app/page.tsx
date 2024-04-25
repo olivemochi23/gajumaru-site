@@ -15,19 +15,23 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="relative">
-        <header className="bg-transparent h-16 flex items-center justify- font-bold absolute top-0 left-0 right-0 z-10">
-          <div className="text-xl flex items-center">
+        <header className="bg-transparent h-16 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
+          <div className="flex items-center md:mr-4">
             <Link href="/">
               <Image
                 src="/ガジュマルロゴ.png"
                 alt="株式会社ガジュマル"
                 width={50}
                 height={50}
+                className="md:mr-2"
               />
             </Link>
-            <h1 className="text-[11px]">株式会社ガジュマル</h1>
+            <div className="flex flex-col">
+              <span className="text-sm md:text-xl">株式会社</span>
+              <span className="text-sm md:text-xl">ガジュマル</span>
+            </div>
           </div>
-          <ul className="flex gap-1 font-bold md:ml-auto">
+          <ul className="flex gap-4 font-bold md:ml-auto">
             {navItems.map((item) => (
               <li key={item.label}>
                 <Button variant="ghost" asChild>

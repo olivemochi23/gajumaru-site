@@ -25,9 +25,9 @@ export default function Home() {
                 height={50}
               />
             </Link>
-            <h1 className="text-[10px]">株式会社ガジュマル</h1>
+            <h1 className="text-[11px]">株式会社ガジュマル</h1>
           </div>
-          <ul className="flex gap-4 font-bold">
+          <ul className="flex gap-1 font-bold md:ml-auto">
             {navItems.map((item) => (
               <li key={item.label}>
                 <Button variant="ghost" asChild>

@@ -5,7 +5,7 @@ import Section from "./section";
 export default function Services() {
   return (
     <Section title="サービス一覧" subTitle="私達のサービス一覧です">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg">
         <div className="border relative rounded-md p-6 shadow space-y-3">
           <div className="aspect-video bg-muted relative">
             <Image

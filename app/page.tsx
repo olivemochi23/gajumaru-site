@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="relative">
-        <header className="bg-transparent h-16 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10 pl-4 pr-4">
+        <header className=" px-4 sm:px-6 lg:px-8 bg-transparent h-16 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10 pl-4 pr-4">
           <div className="flex items-center md:mr-4">
             <Link href="/" onClick={scrollToTop}>
               <Image
@@ -76,17 +76,18 @@ export default function Home() {
       </div>
 
       <main>
-        <section id="services">
+        <section id="services" className='w-screen px-0'>
           <Services />
         </section>
 
-        <section id="contact">  
+        <section id="contact" className='w-screen px-0'>  
           <Contact />
         </section>
       </main>
 
-      <footer className="container sticky top-full h-10 flex items-center border-t justify-between font-bold bg-green-300">
-        <p>&copy; 株式会社ガジュマル</p>
+      <footer className="h-60 px-4 sm:px-6 lg:px-8 sticky top-full border-t justify-between font-bold bg-green-300 bg-[url('/hero.jpg')] bg-cover bg-center flex items-center">
+        <div className="absolute inset-0 bg-white bg-opacity-30"></div>
+        <p className="relative">&copy; 株式会社ガジュマル</p>
       </footer>
     </div>
   )

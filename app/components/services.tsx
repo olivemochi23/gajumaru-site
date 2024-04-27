@@ -4,7 +4,7 @@ import Section from "./section";
 
 export default function Services() {
   return (
-<Section className="bg-teal-100" title="サービス一覧" subTitle="私達のサービス一覧です" style={{}}>
+    <Section className="bg-teal-100 px-4 sm:px-6 lg:px-8" title="サービス一覧" subTitle="私達のサービス一覧です" style={{}}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
         <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
@@ -44,6 +44,20 @@ export default function Services() {
           <h2 className="text-xl font-bold">エンジェルパンケーキ</h2>
           <p>オーシャンビューでふんわり食感のパンケーキを楽しめます</p>
         </div>
+
+        <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
+          <div className="aspect-video bg-muted relative">
+            <Image
+              src="/レンタカー.jpeg" // 画像のパスを指定
+              alt="レンタカー"
+              fill // 親要素の大きさに合わせて画像を拡大/縮小
+              className="object-cover rounded-md" // 画像を丸く表示
+            />
+          </div>
+          <h2 className="text-xl font-bold">レンタカー</h2>
+          <p>小豆島の風を感じながら快適に移動できます</p>
+        </div>
+
       </div>
     </Section>
   );

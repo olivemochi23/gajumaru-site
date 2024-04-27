@@ -85,9 +85,16 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="h-60 px-4 sm:px-6 lg:px-8 sticky top-full border-t justify-between font-bold bg-green-300 bg-[url('/hero.jpg')] bg-cover bg-center flex items-center">
+      <footer className="h-20 px-4 sm:px-6 lg:px-8 sticky top-full border-t font-bold bg-[url('/hero.jpg')] bg-cover bg-center flex items-center justify-center flex-col">
         <div className="absolute inset-0 bg-white bg-opacity-30"></div>
-        <p className="relative">&copy; 株式会社ガジュマル</p>
+        <Image
+          src="/ガジュマルロゴ.png"
+          alt="株式会社ガジュマル"
+          width={50}
+          height={50}
+          className="relative flex items-center justify-center flex-col"
+        />
+        <p className="relative text-center text-xs">&copy; 株式会社ガジュマル</p>
       </footer>
     </div>
   )

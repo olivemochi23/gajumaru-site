@@ -18,7 +18,7 @@ export default function Services() {
               layout="responsive" // 'fill'から'layout="responsive"'に変更
               width={500} // 画像の幅を指定
               height={300} // 画像の高さを指定
-              className="object-cover rounded-md" // 画像を丸く表示
+              className="object-cover rounded-3xl" // 画像を丸く表示
             />
           </div>
           <h2 className="text-xl font-bold">海の家</h2>
@@ -33,7 +33,7 @@ export default function Services() {
               layout="responsive" // 'fill'から'layout="responsive"'に変更
               width={500} // 画像の幅を指定
               height={300} // 画像の高さを指定
-              className="object-cover rounded-md" // 画像を丸く表示
+              className="object-cover rounded-3xl" // 画像を丸く表示
             />
           </div>
           <h2 className="text-xl font-bold">マリンジェットレンタル</h2>
@@ -48,7 +48,7 @@ export default function Services() {
               layout="responsive" // 'fill'から'layout="responsive"'に変更
               width={500} // 画像の幅を指定
               height={300} // 画像の高さを指定
-              className="object-cover rounded-md" // 画像を丸く表示
+              className="object-cover rounded-3xl" // 画像を丸く表示
             />
           </div>
           <h2 className="text-xl font-bold">エンジェルパンケーキ</h2>
@@ -63,7 +63,7 @@ export default function Services() {
             layout="responsive" // 'fill'から'layout="responsive"'に変更
             width={500} // 画像の幅を指定
             height={300} // 画像の高さを指定
-            className="object-cover rounded-md" // 画像を丸く表示
+            className="object-cover rounded-3xl" // 画像を丸く表示
           />
           </div>
           <h2 className="text-xl font-bold">レンタカー</h2>

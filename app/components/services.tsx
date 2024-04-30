@@ -10,12 +10,14 @@ export default function Services() {
       backgroundImage: "url('/お問合せ背景.png')"
     }}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
-        <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
+        <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
             <Image
               src="/海の家.jpg" // 画像のパスを指定
               alt="海の家"
-              fill // 親要素の大きさに合わせて画像を拡大/縮小
+              layout="responsive" // 'fill'から'layout="responsive"'に変更
+              width={500} // 画像の幅を指定
+              height={300} // 画像の高さを指定
               className="object-cover rounded-md" // 画像を丸く表示
             />
           </div>
@@ -23,12 +25,14 @@ export default function Services() {
           <p>地中海のようなオーシャンビューに位置する海の家です</p>
         </div>
 
-        <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
+        <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
             <Image
               src="/マリンジェット.jpeg" // 画像のパスを指定
               alt="マリンジェット"
-              fill // 親要素の大きさに合わせて画像を拡大/縮小
+              layout="responsive" // 'fill'から'layout="responsive"'に変更
+              width={500} // 画像の幅を指定
+              height={300} // 画像の高さを指定
               className="object-cover rounded-md" // 画像を丸く表示
             />
           </div>
@@ -36,12 +40,14 @@ export default function Services() {
           <p>瀬戸内の素敵な海でマリンスポーツを楽しむことができます</p>
         </div>
 
-        <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
+        <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
             <Image
               src="/パンケーキ.jpeg" // 画像のパスを指定
               alt="パンケーキ"
-              fill // 親要素の大きさに合わせて画像を拡大/縮小
+              layout="responsive" // 'fill'から'layout="responsive"'に変更
+              width={500} // 画像の幅を指定
+              height={300} // 画像の高さを指定
               className="object-cover rounded-md" // 画像を丸く表示
             />
           </div>
@@ -49,14 +55,16 @@ export default function Services() {
           <p>オーシャンビューでふんわり食感のパンケーキを楽しめます</p>
         </div>
 
-        <div className="border relative rounded-md p-6 shadow space-y-3 bg-white">
+        <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
-            <Image
-              src="/レンタカー.jpeg" // 画像のパスを指定
-              alt="レンタカー"
-              fill // 親要素の大きさに合わせて画像を拡大/縮小
-              className="object-cover rounded-md" // 画像を丸く表示
-            />
+          <Image
+            src="/レンタカー.jpeg" // 画像のパスを指定
+            alt="レンタカー"
+            layout="responsive" // 'fill'から'layout="responsive"'に変更
+            width={500} // 画像の幅を指定
+            height={300} // 画像の高さを指定
+            className="object-cover rounded-md" // 画像を丸く表示
+          />
           </div>
           <h2 className="text-xl font-bold">レンタカー</h2>
           <p>小豆島の風を感じながら快適に移動できます</p>

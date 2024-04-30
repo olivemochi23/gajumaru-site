@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import Hero from '@/app/components/hero'
 import Services from './components/services'
 import Contact from './components/contact'
 import About from './components/about'
+import { FiMenu } from 'react-icons/fi';
+import { MdClose } from 'react-icons/md';
+import { Button } from "@/components/ui/button"
+
 
 const navItems = [
   { label: 'ガジュマルについて', href: 'about' }, 
@@ -52,9 +55,9 @@ export default function Home() {
           </div>
         </div>
 
-          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          </button>
+        <Button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+        </Button>
 
           <ul className={`absolute top-full left-0 w-full bg-slate-300 md:bg-transparent md:static md:flex md:justify-end gap-4 font-bold md:ml-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
             {navItems.map((item) => (
@@ -117,7 +120,7 @@ export default function Home() {
       </main>
 
       <footer className="h-20 px-4 sm:px-6 lg:px-8 sticky top-full border-t font-bold bg-[url('/hero.jpg')] bg-cover bg-center flex items-center justify-center flex-col">
-        <div className="absolute inset-0 bg-white bg-opacity-30"></div>
+        <div className="absolute inset-0 bg-white bg-opacity-60"></div>
         <Image
           src="/ガジュマルロゴ.png"
           alt="株式会社ガジュマル"
@@ -125,7 +128,7 @@ export default function Home() {
           height={50}
           className="relative flex items-center justify-center flex-col"
         />
-        <p className="relative text-center text-xs">&copy; 株式会社ガジュマル</p>
+        <p className="relative text-center text-xs ">&copy; 2024 株式会社ガジュマル All rights reserved</p>
       </footer>
     </div>
   )

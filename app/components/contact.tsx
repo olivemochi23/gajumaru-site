@@ -5,7 +5,7 @@ import { PhoneCall } from "lucide-react"
 export function ButtonWithIcon() {
   return (
     <div className="relative z-10 flex justify-center items-center">
-      <Button className="bg-orange-500 active:bg-orange-500 z-10 text-white rounded-full ">
+      <Button className="bg-orange-500 active:bg-orange-500 hover:bg-orange-500 z-10 text-white rounded-full">
         <PhoneCall className="mr-2 h-4 w-4" /> 000-0000-0000
       </Button>
     </div>

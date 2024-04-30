@@ -59,7 +59,7 @@ export default function Home() {
           {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
         </Button>
 
-          <ul className={`absolute top-full left-0 w-full bg-slate-300 md:bg-transparent md:static md:flex md:justify-end gap-4 font-bold md:ml-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
+          <ul className={`absolute top-full left-0 w-full bg-slate-300 bg-opacity-50 md:bg-transparent md:static md:flex md:justify-end gap-4 font-bold md:ml-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
             {navItems.map((item) => (
               <li key={item.label} className="text-black md:text-black text-center">
                 <a

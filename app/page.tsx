@@ -105,7 +105,7 @@ export default function Home() {
         </div>
       </div>
 
-      <main>
+      <main className="bg-contact-background bg-repeat bg-contain bg-opacity-50">
         <section id="about" className='w-screen px-0'>
           <About />
         </section>

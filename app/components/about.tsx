@@ -8,9 +8,9 @@ export default function About() {
 <Section
         title="私たちの強み"
         subTitle="ガジュマルの特徴"
-        className="px-4 sm:px-6 lg:px-8"
+        className="px-4 sm:px-6 lg:px-8 "
         style={{
-          backgroundImage: "url('/お問合せ背景.png')"
+          //backgroundImage: "url('/お問合せ背景.png')" 
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">

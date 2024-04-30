@@ -8,6 +8,7 @@ import Services from './components/services'
 import Contact from './components/contact'
 import { Button } from "@/components/ui/button"
 import { useEffect } from 'react'
+import About from './components/about'
 
 const navItems = [
   { label: 'Top', href: '/' },
@@ -76,6 +77,10 @@ export default function Home() {
       </div>
 
       <main>
+      <section id="services" className='w-screen px-0'>
+          <About />
+        </section>
+
         <section id="services" className='w-screen px-0'>
           <Services />
         </section>

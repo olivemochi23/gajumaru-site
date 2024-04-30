@@ -105,17 +105,30 @@ export default function Home() {
         </div>
       </div>
 
-      <main className="bg-contact-background bg-repeat bg-contain bg-opacity-50">
-        <section id="about" className='w-screen px-0'>
-          <About />
+      <main className="relative">
+        <section id="about" className='w-screen px-0 relative'>
+          <div className="relative z-10">
+            <About />
+          </div>
+          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
+            <div className="absolute inset-0 bg-white opacity-30"></div>
+          </div>
         </section>
-
-        <section id="services" className='w-screen px-0'>
-          <Services />
+        <section id="services" className='w-screen px-0 relative'>
+          <div className="relative z-10">
+            <Services />
+          </div>
+          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
+            <div className="absolute inset-0 bg-white opacity-30"></div>
+          </div>
         </section>
-
-        <section id="contact" className='w-screen px-0 '>  
-          <Contact />
+        <section id="contact" className='w-screen px-0 relative'>
+          <div className="relative z-10">
+            <Contact />
+          </div>
+          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
+            <div className="absolute inset-0 bg-white opacity-30"></div>
+          </div>
         </section>
       </main>
 

@@ -74,11 +74,18 @@ const config: Config = {
       },
       backgroundImage: {
         'contact-background': "url('/背景.png')",
-      }
+      },
+      textShadow: {
+        'outline': '0 0 3px #000', // 黒の縁取り
+        'outline-lg': '0 0 8px #000', // より大きな黒の縁取り
+      },
     },
   },
   
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwindcss-textshadow')
+],
 }
 
 export default config

@@ -5,7 +5,7 @@ import Section from "./section";
 export default function Services() {
   return (
     <Section className="bg-teal-100 px-4 sm:px-6 lg:px-8" title="サービス一覧" 
-    subTitle="私達のサービス一覧です" 
+    subTitle="" 
     style={{
       backgroundImage: "url('/お問合せ背景.png')"
     }}>

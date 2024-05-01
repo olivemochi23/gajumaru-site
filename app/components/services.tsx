@@ -13,7 +13,7 @@ export default function Services() {
         <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
             <Image
-              src="/海の家.jpg" // 画像のパスを指定
+              src="/海の家AI.jpeg" // 画像のパスを指定
               alt="海の家"
               layout="responsive" // 'fill'から'layout="responsive"'に変更
               width={500} // 画像の幅を指定

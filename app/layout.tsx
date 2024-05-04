@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Zen_Maru_Gothic } from 'next/font/google'
+import { Zen_Kaku_Gothic_New } from 'next/font/google'
 
-const zenMaruGothic = Zen_Maru_Gothic({
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ['400', '700'],
-  subsets: ['cyrillic', 'latin'],
+  subsets: ['latin'],
   display: 'swap'
 })
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={cn(zenMaruGothic.className, 'min-h-dvh flex flex-col')}>
+      <body className={cn(zenKakuGothicNew.className, 'min-h-dvh flex flex-col')}>
         {children}
       </body>
     </html>

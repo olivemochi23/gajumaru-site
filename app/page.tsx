@@ -36,22 +36,41 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const [logoSize, setLogoSize] = useState(50);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 400) {
+        setLogoSize(80);
+      } else if (window.innerWidth < 768) {
+        setLogoSize(100);
+      } else {
+        setLogoSize(120);
+      }
+    };
+  
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="relative">
-        <header className="px-4 sm:px-6 lg:px-8 bg-transparent h-16 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
+      <header className="px-4 sm:px-6 lg:px-8 bg-transparent h-24 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
 
-        <div className="flex items-center">
-          <div onClick={scrollToTop} className="cursor-pointer">
-            <Image
-              src="/ガジュマルロゴ.png"
-              alt="株式会社ガジュマル"
-              width={50}
-              height={50}
-            />
-          </div>
-          <div onClick={scrollToTop} className="flex flex-col ml-2 flex-grow cursor-pointer">
-            <span className="text-sm md:text-xl">株式会社ガジュマル</span>
+        <div className="flex items-center mt-4">
+        <div onClick={scrollToTop} className="cursor-pointer">
+          <Image
+            src="/ガジュマルロゴ.png"
+            alt="株式会社ガジュマル"
+            width={logoSize}
+            height={logoSize}
+          />
+        </div>
+          <div onClick={scrollToTop} className="flex flex-col ml-2 cursor-pointer md:flex md:flex-nowrap">
+            <span className="text-lg md:text-2xl whitespace-nowrap">株式会社ガジュマル</span>
           </div>
         </div>
 
@@ -105,29 +124,29 @@ export default function Home() {
         </div>
       </div>
 
-      <main className="relative">
-        <section id="about" className='w-screen px-0 relative'>
-          <div className="relative z-10">
+      <main className="relative  bg-contact-background  bg-center ">
+        <section id="about" className='w-screen px-0 relative '>
+          <div className="relative z-10 ">
             <About />
           </div>
-          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
-            <div className="absolute inset-0 bg-white opacity-30"></div>
+          <div className="absolute inset-0  ">
+            <div className="absolute inset-0 "></div>
           </div>
         </section>
         <section id="services" className='w-screen px-0 relative'>
           <div className="relative z-10">
             <Services />
           </div>
-          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
-            <div className="absolute inset-0 bg-white opacity-30"></div>
+          <div className="absolute inset-0 ">
+            <div className="absolute inset-0 "></div>
           </div>
         </section>
         <section id="contact" className='w-screen px-0 relative'>
           <div className="relative z-10">
             <Contact />
           </div>
-          <div className="absolute inset-0 bg-contact-background bg-repeat bg-contain">
-            <div className="absolute inset-0 bg-white opacity-30"></div>
+          <div className=" ">
+            <div className="absolute inset-0 bg-green-100 opacity-80"></div>
           </div>
         </section>
       </main>

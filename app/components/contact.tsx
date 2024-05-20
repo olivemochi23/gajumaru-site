@@ -20,7 +20,7 @@ export default function Contact() {
       className="relative px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center bg-center bg-no-repeat bg-cover"
       style={{}}
     >
-      <ButtonWithIcon />
+
     </Section>
   );
 }

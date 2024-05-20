@@ -36,7 +36,7 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const [logoSize, setLogoSize] = useState(50);
+  const [logoSize, setLogoSize] = useState(80);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +45,7 @@ export default function Home() {
       } else if (window.innerWidth < 768) {
         setLogoSize(100);
       } else {
-        setLogoSize(120);
+        setLogoSize(100);
       }
     };
   
@@ -60,7 +60,7 @@ export default function Home() {
       <div className="relative">
       <header className="px-4 sm:px-6 lg:px-8 bg-transparent h-24 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
 
-        <div className="flex items-center mt-4">
+        <div className="flex items-center mt-8">
         <div onClick={scrollToTop} className="cursor-pointer">
           <Image
             src="/ガジュマルロゴ.png"
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <Button className="md:hidden text-white mt-8" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
         </Button>
 

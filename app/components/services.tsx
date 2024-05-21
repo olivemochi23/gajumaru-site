@@ -30,7 +30,7 @@ export default function Services() {
           <div className="aspect-video bg-muted relative">
           <Image
             //src="/レンタカー.jpeg" // 画像のパスを指定
-            src="/comming_soon.png"
+            src="/レンタカー.jpeg"
             alt="レンタカー"
             layout="responsive" // 'fill'から'layout="responsive"'に変更
             width={500} // 画像の幅を指定
@@ -54,7 +54,7 @@ export default function Services() {
               className="object-cover rounded-3xl" // 画像を丸く表示
             />
           </div>
-          <h2 className="text-xl font-bold">マリンジェットレンタル</h2>
+          <h2 className="text-xl font-bold">ジェットスキーレンタル</h2>
           <p>瀬戸内の素敵な海でマリンスポーツを楽しむことができます</p>
         </div>
 

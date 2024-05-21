@@ -16,11 +16,11 @@ export default function Contact() {
   return (
     <Section
       title="お問合せ"
-      subTitle="お問合せのご連絡はお電話にて受け付けております。ご不明点等ございましたらお気軽にお問合せください。"
+      subTitle="お問合せのご連絡はInstagram、公式ラインにて受け付けております。ご不明点等ございましたらお気軽にお問合せください。"
       className="relative px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center bg-center bg-no-repeat bg-cover"
       style={{}}
     >
-      <ButtonWithIcon />
+
     </Section>
   );
 }

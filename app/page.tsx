@@ -40,12 +40,10 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 400) {
+      if (window.innerWidth < 450) {
         setLogoSize(80);
-      } else if (window.innerWidth < 768) {
-        setLogoSize(100);
       } else {
-        setLogoSize(100);
+        setLogoSize(300);
       }
     };
   

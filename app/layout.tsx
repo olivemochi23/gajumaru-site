@@ -10,6 +10,7 @@ const zenKakuGothicNew = Zen_Kaku_Gothic_New({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://gajumaru-site.vercel.app/'), // ここにあなたのドメインを設定します
   title: "株式会社ガジュマル - 海の家、レンタカー、パンケーキ、マリンジェットレンタル",
   description: "小豆島で海の家、レンタカー、パンケーキ、マリンジェットレンタルを提供する観光会社。小豆島での最高の体験をご提供します。",
   icons: {

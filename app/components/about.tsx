@@ -13,7 +13,7 @@ export default function About() {
           
             }}
       >
-        <div className=" gap-4 ">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           <div className="  py-20">
             <h4 className=" text-xl font-bold">上質な施設</h4>
             <p>

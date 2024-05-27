@@ -1,7 +1,7 @@
 // app/components/section.tsx
 interface SectionProps {
   title: string;
-  subTitle: string;
+  subTitle: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;

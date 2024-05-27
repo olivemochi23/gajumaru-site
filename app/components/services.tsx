@@ -22,8 +22,8 @@ export default function Services() {
               className="object-cover rounded-3xl" // 画像を丸く表示
             />
           </div>
-          <h2 className="text-xl font-bold">海の家</h2>
-          <p>地中海のようなオーシャンビューに位置する海の家です</p>
+          <h2 className="text-xl font-bold">ガジュマルテラス</h2>
+          <p>地中海のようなオーシャンビューに位置するカフェです</p>
         </div>
 
         <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">

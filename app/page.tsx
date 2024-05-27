@@ -9,6 +9,8 @@ import About from './components/about'
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
 import { Button } from "@/components/ui/button"
+import Access from './components/accsess'
+
 
 
 const navItems = [
@@ -131,6 +133,7 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
+
         <section id="services" className='w-screen px-0 relative'>
           <div className="relative z-10">
             <Services />
@@ -139,6 +142,19 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
+        <section id="" className='w-screen px-0 relative'>
+          <div className="relative z-10">
+            <Access 
+              apiKey="YOUR_API_KEY"
+              q="香川県小豆郡小豆島町西村甲1490-1"
+              height={400}
+            />
+          </div>
+          <div className=" ">
+            <div className="absolute inset-0 "></div>
+          </div>
+        </section>
+
         <section id="contact" className='w-screen px-0 relative'>
           <div className="relative z-10">
             <Contact />

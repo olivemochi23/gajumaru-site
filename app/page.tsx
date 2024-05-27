@@ -13,9 +13,11 @@ import Access from './components/accsess'
 
 
 
+
 const navItems = [
   { label: 'ガジュマルについて', href: 'about' }, 
-  { label: '提供サービス', href: 'services' },
+  { label: 'サービス', href: 'services' },
+  { label: 'アクセス', href: 'accsess' },
   { label: 'お問合せ', href: 'contact' },
 ]
 
@@ -142,13 +144,9 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
-        <section id="" className='w-screen px-0 relative'>
+        <section id="acssess" className='w-screen px-0 relative'>
           <div className="relative z-10">
-            <Access 
-              apiKey="YOUR_API_KEY"
-              q="香川県小豆郡小豆島町西村甲1490-1"
-              height={400}
-            />
+          <Access/>
           </div>
           <div className=" ">
             <div className="absolute inset-0 "></div>

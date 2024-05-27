@@ -22,7 +22,7 @@ export default function Access() {
           <GoogleMapsEmbed
             apiKey="AIzaSyDf5vxFKOvYRh1pywfhlbyoGBrAu1Rnd3U"
             height={400}
-            width="100%"
+            width={400}
             mode="place"
             q="香川県小豆郡小豆島町西村甲1490-1"
           />

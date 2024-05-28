@@ -9,7 +9,7 @@ import About from './components/about'
 import { FiMenu } from 'react-icons/fi';
 import { MdClose } from 'react-icons/md';
 import { Button } from "@/components/ui/button"
-import Access from './components/accsess'
+import Access from './components/access'
 
 
 
@@ -17,7 +17,7 @@ import Access from './components/accsess'
 const navItems = [
   { label: 'ガジュマルについて', href: 'about' }, 
   { label: 'サービス', href: 'services' },
-  { label: 'アクセス', href: 'accsess' },
+  { label: 'アクセス', href: 'access' },
   { label: 'お問合せ', href: 'contact' },
 ]
 
@@ -144,7 +144,7 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
-        <section id="acssess" className='w-screen px-0 relative'>
+        <section id="access" className='w-screen px-0 relative'>
           <div className="relative z-10 items-center">
           <Access/>
           </div>

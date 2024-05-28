@@ -145,7 +145,7 @@ export default function Home() {
           </div>
         </section>
         <section id="acssess" className='w-screen px-0 relative'>
-          <div className="relative z-10">
+          <div className="relative z-10 items-center">
           <Access/>
           </div>
           <div className=" ">

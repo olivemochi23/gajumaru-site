@@ -19,10 +19,10 @@ export default function Access() {
       <div className="w-full h-96">
         <GoogleMapsEmbed
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-          height="100%"
-          width="100%"
+          height={400}
+          width={400}
           mode="place"
-          q="株式会社ガジュマル"
+          q="ガジュマルテラス"
         />
       </div>
     </Section>

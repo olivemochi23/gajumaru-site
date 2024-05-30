@@ -14,6 +14,7 @@ import Access from './components/access'
 
 
 
+
 const navItems = [
   { label: 'ガジュマルについて', href: 'about' }, 
   { label: 'サービス', href: 'services' },

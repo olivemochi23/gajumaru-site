@@ -9,7 +9,7 @@ export default function Access() {
         <>
           {"〒761-4434 香川県小豆郡小豆島町西村甲1490-1 "}
           <br />
-          営業時間： 10:00 - 18:00  
+          営業時間： 10:00 - 17:00  
         </>
       }
       className="px-4 sm:px-6 lg:px-8"

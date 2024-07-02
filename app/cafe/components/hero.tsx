@@ -4,12 +4,12 @@ import Section from '../../components/section';
 export default function Hero() {
   return (
     <Section
-      title=""
-      subTitle=""
-      className="px-4 sm:px-6 lg:px-8"
+      title="ガジュマルテラスへようこそ"
+      subTitle="小豆島の自然に囲まれた癒しの空間"
+      className="text-center text-pink-800"
     >
-      <div className="">
-        <h1>準備中</h1>
+      <div className="mt-8">
+        <img src="/cafe-hero.jpg" alt="カフェの外観" className="shadow-lg mx-auto w-full object-cover h-96" />
       </div>
     </Section>
   );

@@ -1,10 +1,8 @@
-import Footer from '@/renta-car/components/Footer'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import MainCar from '@/renta-car/components/mainCar'
-import Guide from '@/renta-car/components/guide'
-import MoreInfo from '@/renta-car/components/more-info'
-import FloatingReservationButton from '@/renta-car/components/FloatingReservationButton'
+import Footer from '@/app/renta-car/components/Footer'
+import MainCar from '@/app/renta-car/components/mainCar'
+import Guide from '@/app/renta-car/components/guide'
+import MoreInfo from '@/app/renta-car/components/more-info'
+import FloatingReservationButton from '@/app/renta-car/components/FloatingReservationButton'
 
 const Home = () => {
   return (

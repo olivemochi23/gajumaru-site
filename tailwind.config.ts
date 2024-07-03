@@ -76,8 +76,9 @@ const config: Config = {
         'contact-background': "url('/背景.png')",
       },
       textShadow: {
-        'outline': '0 0 3px #000', // 黒の縁取り
-        'outline-lg': '0 0 8px #000', // より大きな黒の縁取り
+        'outline': '0 0 3px #000, 0 0 3px #000, 0 0 3px #000',
+        'outline-lg': '0 0 8px #000, 0 0 8px #000, 0 0 8px #000',
+        'white-outline': '2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 2px 0 #fff, 2px 0 0 #fff, 0 -2px 0 #fff, -2px 0 0 #fff',
       },
     },
   },

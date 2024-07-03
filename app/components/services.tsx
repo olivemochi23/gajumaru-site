@@ -14,8 +14,8 @@ export default function Services() {
       <Link href="/cafe" className="block border relative rounded-3xl p-6 shadow space-y-3 bg-white hover:shadow-lg transition-shadow duration-300">
   <div className="aspect-video bg-muted relative">
     <Image
-      src="/comming_soon.png"
-      alt="海の家"
+      src="/cafe-hero.jpg"
+      alt="ガジュマルテラス"
       layout="responsive"
       width={500}
       height={300}
@@ -26,22 +26,24 @@ export default function Services() {
   <p>地中海のようなオーシャンビューに位置するカフェです</p>
 </Link>
 
-        <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
-          <div className="aspect-video bg-muted relative">
-          <Image
-            //src="/レンタカー.jpeg" // 画像のパスを指定
-            src="/レンタカー.jpeg"
-            alt="レンタカー"
-            layout="responsive" // 'fill'から'layout="responsive"'に変更
-            width={500} // 画像の幅を指定
-            height={300} // 画像の高さを指定
-            className="object-cover rounded-3xl" // 画像を丸く表示
-          />
-          </div>
-          <h2 className="text-xl font-bold">レンタカー</h2>
-          <p>小豆島の風を感じながら快適に移動できます</p>
-        </div>
+<Link href="/renta-car" className="block">
+  <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white hover:shadow-lg transition-shadow duration-300">
+    <div className="aspect-video bg-muted relative">
+      <Image
+        src="/レンタカー.jpeg"
+        alt="レンタカー"
+        layout="responsive"
+        width={500}
+        height={300}
+        className="object-cover rounded-3xl"
+      />
+    </div>
+    <h2 className="text-xl font-bold">レンタカー</h2>
+    <p>小豆島の風を感じながら快適に移動できます</p>
+  </div>
+</Link>
 
+{/*
         <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white">
           <div className="aspect-video bg-muted relative">
             <Image
@@ -57,7 +59,7 @@ export default function Services() {
           <h2 className="text-xl font-bold">ジェットスキーレンタル</h2>
           <p>瀬戸内の素敵な海でマリンスポーツを楽しむことができます</p>
         </div>
-
+*/}
 
 
 

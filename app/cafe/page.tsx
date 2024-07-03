@@ -60,8 +60,8 @@ const CafePage: React.FC = () => {
         </div>
       )}
 
-      <main className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-        <section id="hero" className="col-span-full">
+      <main className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-8 p-8 ">
+        <section id="hero" className="col-span-full rounded-3xl">
           <Hero />
         </section>
 

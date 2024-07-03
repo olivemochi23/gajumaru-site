@@ -3,6 +3,8 @@ import MainCar from '@/app/renta-car/components/mainCar'
 import Guide from '@/app/renta-car/components/guide'
 import MoreInfo from '@/app/renta-car/components/more-info'
 import FloatingReservationButton from '@/app/renta-car/components/FloatingReservationButton'
+import Header from '@/app/renta-car/components/Header'
+import Hero from '@/app/renta-car/components/Hero'
 
 const Home = () => {
   return (
@@ -38,4 +40,5 @@ const Home = () => {
     </div>
   )
 }
+
 export default Home

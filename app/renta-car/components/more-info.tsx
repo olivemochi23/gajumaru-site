@@ -25,9 +25,9 @@ const MoreInfo = () => {
     <Section
       title="詳細情報"
       subTitle="ガジュマルレンタカーのサービス詳細"
-      className="bg-pink-200 rounded-3xl"
+      className="bg-pink-200 rounded-3xl my-8 mx-4"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 mx-4">
         {infoSections.map((section, index) => (
           <div key={index} className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-xl font-bold text-pink-600 mb-3">{section.title}</h3>

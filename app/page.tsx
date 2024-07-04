@@ -97,7 +97,7 @@ export default function Home() {
 
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md">
-            <ul className="flex flex-col items-center gap-4 p-4">
+            <ul className="flex flex-col items-center gap-0.5 py-0.5">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <a
@@ -106,7 +106,7 @@ export default function Home() {
                       handleClick(e, item.href);
                       setIsMenuOpen(false); // Close menu after selection on mobile
                     }}
-                    className="text-lg font-bold"
+                    className="block px-4 py-1 text-lg font-bold"
                   >
                     {item.label}
                   </a>

@@ -5,12 +5,13 @@ import MoreInfo from '@/app/renta-car/components/more-info'
 import FloatingReservationButton from '@/app/renta-car/components/FloatingReservationButton'
 import Header from '@/app/renta-car/components/Header'
 import Hero from '@/app/renta-car/components/Hero'
+import Access from '@/app/renta-car/components/Access'
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-pink-50 min-h-screen flex flex-col">
       <Header />
-      <main className="relative bg-contact-background bg-center">
+      <main className="flex-grow">
         <section id="hero" className="w-screen px-0 relative">
           <div className="relative z-10">
             <Hero />
@@ -32,6 +33,12 @@ const Home = () => {
         <section id="moreInfo" className="w-screen px-0 relative mb-8">
           <div className="relative z-10">
             <MoreInfo />
+          </div>
+        </section>
+
+        <section id="access" className="w-screen px-0 relative mb-8">
+          <div className="relative z-10">
+            <Access />
           </div>
         </section>
       </main>

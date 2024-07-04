@@ -8,7 +8,7 @@ const Guide = () => {
   ];
 
   return (
-    <div className="bg-pink-200 p-4 sm:p-8 rounded-3xl">
+    <div className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-pink-600">小豆島おすすめスポット</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {spots.map((spot) => (

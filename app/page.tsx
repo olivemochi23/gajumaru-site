@@ -141,12 +141,12 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
-        <section id="access" className='w-screen px-0 relative'>
-          <div className="relative z-10 items-center">
+        <section id="access" className='w-screen px-0 relative rounded-3xl'>
+          <div className="relative z-10 items-center rounded-3xl">
           <Access/>
           </div>
           <div className=" ">
-            <div className="absolute inset-0 "></div>
+            <div className="absolute inset-0 rounded-3xl"></div>
           </div>
         </section>
 

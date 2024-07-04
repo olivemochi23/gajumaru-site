@@ -73,9 +73,9 @@ const CafePage: React.FC = () => {
           <Menu />
         </section>
 
-        <section id="access" className="col-span-full bg-white rounded-3xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold mb-4 text-pink-800">アクセス</h2>
-          <p className="text-lg mb-4 text-gray-600">〒761-4434 香川県小豆郡小豆島町西村甲1490-1</p>
+        <section id="access" className="col-span-full ">
+          <h2 className="text-3xl font-bold mb-4 text-pink-800 text-center">アクセス</h2>
+          <p className="text-lg mb-4 text-gray-600"></p>
           <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13156.940217841357!2d134.2807738!3d34.4715609!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355479004e74d17f%3A0xe455c7a42f07c8f2!2z44Ks44K444Ol44Oe44Or44OG44Op44K5!5e0!3m2!1sja!2sjp!4v1716864241649!5m2!1sja!2sjp"

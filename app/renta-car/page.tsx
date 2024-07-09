@@ -6,6 +6,8 @@ import FloatingReservationButton from '@/app/renta-car/components/FloatingReserv
 import Header from '@/app/renta-car/components/Header'
 import Hero from '@/app/renta-car/components/Hero'
 import Access from '@/app/renta-car/components/Access'
+import Link from 'next/link'
+
 
 const Home = () => {
   return (
@@ -24,11 +26,20 @@ const Home = () => {
           </div>
         </section>
 
+        <section className="w-screen px-0 relative my-8">
+          <div className="relative z-10 text-center">
+            <Link href="/renta-car/cars" className="bg-pink-500 text-white font-bold py-2 px-4 rounded-full hover:bg-pink-600 transition-colors">
+              車種と料金を見る
+            </Link>
+          </div>
+        </section>
+
         <section id="guide" className="w-screen px-0 relative my-8">
           <div className="relative z-10">
             <Guide />
           </div>
         </section>
+
 
         <section id="moreInfo" className="w-screen px-0 relative mb-8">
           <div className="relative z-10">

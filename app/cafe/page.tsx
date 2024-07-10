@@ -28,23 +28,39 @@ const CafePage: React.FC = () => {
 
   return (
     <div className="bg-pink-50 min-h-screen flex flex-col">
-      <header className="bg-pink-200 p-4 rounded-b-3xl shadow-md flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="cursor-pointer">
-            <Image
-              src="/ガジュマルロゴ.png"
-              alt="株式会社ガジュマル"
-              width={logoSize}
-              height={logoSize}
-              className="rounded-full"
-            />
-          </Link>
-          <h1 className="text-2xl font-bold text-pink-800 ml-4">ガジュマルテラス</h1>
-        </div>
-        <Button className="md:hidden text-pink-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
-        </Button>
-      </header>
+<header className="bg-pink-200 p-4 rounded-b-3xl shadow-md">
+  <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+    <div className="flex items-center mb-4 md:mb-0">
+      <Link href="/" className="cursor-pointer">
+        <Image
+          src="/ガジュマルロゴ.png"
+          alt="株式会社ガジュマル"
+          width={logoSize}
+          height={logoSize}
+          className="rounded-full"
+        />
+      </Link>
+      <h1 className="text-2xl font-bold text-pink-800 ml-4">ガジュマルテラス</h1>
+    </div>
+    <div className="flex flex-col md:flex-row items-center">
+      <nav className="hidden md:block">
+        <ul className="flex space-x-4">
+          <li><a href="#hero" className="text-lg font-bold text-pink-800">ホーム</a></li>
+          <li><a href="#info" className="text-lg font-bold text-pink-800">カフェ情報</a></li>
+          <li><a href="#menu" className="text-lg font-bold text-pink-800">メニュー</a></li>
+          <li><a href="#access" className="text-lg font-bold text-pink-800">アクセス</a></li>
+        </ul>
+      </nav>
+      <div className="mt-4 md:mt-0 md:ml-4">
+        <p className="text-pink-800 font-bold">お問い合わせ:</p>
+        <a href="tel:0879-62-9879" className="text-pink-800 font-bold">TEL: 0879-62-9879</a>
+      </div>
+    </div>
+    <Button className="md:hidden text-pink-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+    </Button>
+  </div>
+</header>
 
       {isMenuOpen && (
         <div className="md:hidden bg-pink-100 rounded-b-3xl shadow-md">

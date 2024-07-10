@@ -17,7 +17,7 @@ export default function Menu() {
   return (
     <Section
       title="メニュー"
-      subTitle="地元の食材を使用した季節のメニュー"
+      subTitle="地元の食材を使用したメニュー"
       className="text-pink-800"
     >
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -35,7 +35,7 @@ const Header: React.FC = () => {
         </div>
         <div className="hidden sm:block">
           <p className="bg-orange-600 text-white font-bold px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-pink-400 mb-2 text-xs">ご予約はメール<br />または<br />お電話にて承ります</p>
-          <p className="bg-orange-600 text-white font-bold text-xs px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-pink-400">Tel : 000-0000-0000<br />受付時間 : 8:00-20:00</p>
+          <p className="bg-orange-600 text-white font-bold text-xs px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-pink-400">Tel : 0120-544-960<br />受付時間 : 8:00-20:00</p>
         </div>
         <Button className="md:hidden text-pink-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}

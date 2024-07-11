@@ -53,7 +53,7 @@ const CafePage: React.FC = () => {
             </nav>
             <div className="hidden sm:block text-right">
               <p className="text-pink-800 font-bold text-xs sm:text-sm">お問い合わせ:</p>
-              <a href="tel:0879-62-9879" className="text-pink-800 font-bold text-xs sm:text-sm">TEL: 0879-62-9879</a>
+              <a href="tel:0879-62-9879" className="text-pink-800 font-bold text-xs sm:text-sm">店長 伊丹：080-9331-5205</a>
             </div>
           </div>
           <Button className="sm:hidden text-pink-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -110,7 +110,7 @@ const CafePage: React.FC = () => {
           <p className="text-lg mb-4 text-gray-600">ご予約・お問い合わせは以下の方法からお気軽にどうぞ。</p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="tel:0879-62-9879" className="bg-blue-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-shadow duration-300 text-center">
-              <span className="block sm:inline">TEL: </span>0879-62-9879
+              <span className="block sm:inline">店長 伊丹：</span>080-9331-5205
             </a>
             <a href="https://www.instagram.com/gajumaru_0403?igsh=eWg3dTk3dTgxb2Ez" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-shadow duration-300 text-center">
               Instagram

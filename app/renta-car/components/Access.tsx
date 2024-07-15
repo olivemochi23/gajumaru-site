@@ -6,7 +6,7 @@ const Access: React.FC = () => {
     <Section
       title="アクセス"
       subTitle=""
-      className=" rounded-3xl my-8 mx-4"
+      className="relative z-10 bg-pink-200 rounded-3xl p-4 sm:p-8 my-8 mx-4"
     >
       <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
         <iframe

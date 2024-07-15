@@ -77,7 +77,8 @@ export default function Home() {
           {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
         </Button>
 
-          <ul className={`absolute top-full left-0 w-full bg-slate-300 bg-opacity-50 md:bg-transparent md:static md:flex md:justify-end gap-4 font-bold md:ml-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
+        <nav className={`md:static md:bg-transparent ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
+          <ul className="absolute top-full left-0 w-full bg-slate-300 bg-opacity-50 md:bg-transparent md:static md:flex md:justify-end gap-4 font-bold md:ml-auto">
             {navItems.map((item) => (
               <li key={item.label} className="mt-8 text-black md:text-black text-center">
                 <a
@@ -93,6 +94,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </nav>
         </header>
 
         {isMenuOpen && (
@@ -141,6 +143,7 @@ export default function Home() {
             <div className="absolute inset-0 "></div>
           </div>
         </section>
+        
         <section id="access" className='w-screen px-0 relative rounded-3xl'>
           <div className="relative z-10 items-center rounded-3xl">
           <Access/>

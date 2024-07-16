@@ -1,8 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Section from '../components/section';
+import Link from 'next/link';
+
 
 interface CarType {
+  id: string;  // この行を追加
   name: string;
   capacity: number;
   image: string;
@@ -16,6 +19,7 @@ interface CarType {
 
 const carTypes: CarType[] = [
   {
+    id: 'mini-convertible',  // この行を追加
     name: 'BMW Mini コンバーチブル',
     capacity: 5,
     image: '/mini.jpg',
@@ -27,6 +31,7 @@ const carTypes: CarType[] = [
     },
   },
   {
+    id: 'kei', 
     name: '軽自動車',
     capacity: 4,
     image: '/kei.jpg',
@@ -38,6 +43,7 @@ const carTypes: CarType[] = [
     },
   },
   {
+    id: 'compact',
     name: 'コンパクトタイプ',
     capacity: 5,
     image: '/compact.jpg',
@@ -49,6 +55,7 @@ const carTypes: CarType[] = [
     },
   },
   {
+    id: 'onebox',
     name: 'ワンボックス',
     capacity: 8,
     image: '/onebox.jpg',
@@ -76,31 +83,36 @@ export default function CarsPage() {
         subTitle="多様な車種をご用意しております"
         className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {carTypes.map((car) => (
-            <div key={car.name} className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
-              <div className="relative aspect-w-16 aspect-h-9">
-              <Image
-                src={car.image}
-                alt={car.name}
-                width={500}
-                height={300}
-                className="object-cover w-full h-full"
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {carTypes.map((car) => (
+              <div key={car.name} className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+                <div className="relative aspect-w-16 aspect-h-9">
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    width={500}
+                    height={300}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-lg mb-2 text-pink-600">{car.name}</h3>
+                  <p className="text-gray-600 mb-2">乗車人数: {car.capacity}人</p>
+                  <ul className="text-sm text-gray-700 mb-4">
+                    <li>6時間コース: ¥{car.prices.sixHours.toLocaleString()}</li>
+                    <li>12時間コース: ¥{car.prices.twelveHours.toLocaleString()}</li>
+                    <li>24時間コース: ¥{car.prices.twentyFourHours.toLocaleString()}</li>
+                    <li>契約時間延長: ¥{car.prices.extension.toLocaleString()}</li>
+                  </ul>
+                  <Link href={`/renta-car/cars/${car.id}`}>
+                    <button className="bg-pink-500 text-white font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors w-full">
+                      詳細を見る
+                    </button>
+                  </Link>
+                </div>
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-lg mb-2 text-pink-600">{car.name}</h3>
-                <p className="text-gray-600 mb-2">乗車人数: {car.capacity}人</p>
-                <ul className="text-sm text-gray-700">
-                  <li>6時間コース: ¥{car.prices.sixHours.toLocaleString()}</li>
-                  <li>12時間コース: ¥{car.prices.twelveHours.toLocaleString()}</li>
-                  <li>24時間コース: ¥{car.prices.twentyFourHours.toLocaleString()}</li>
-                  <li>契約時間延長: ¥{car.prices.extension.toLocaleString()}</li>
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
       </Section>
 
       <Section

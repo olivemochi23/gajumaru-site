@@ -25,8 +25,8 @@ const MainCar = () => {
             />
           </div>
           <div className="p-4">
-            <h3 className="font-bold text-lg mb-2 text-pink-500">{car.name}</h3>
-            <p className="text-gray-600">{car.description}</p>
+            <h3 className="font-bold text-lg mb-2 text-pink-500">車種と料金</h3>
+            <p className="text-gray-600">話題のMiniオープンカーからかわいい軽自動車までをラインナップ</p>
           </div>
         </div>
       </Link>

@@ -25,7 +25,6 @@ const MoreInfo = () => {
     { title: 'ご返却方法', href: '/renta-car/return' },
     { title: '運転免許証について', href: '/renta-car/license' },
     { title: 'プライバシーポリシー', href: '/renta-car/privacy-policy' },
-    { title: '免責補償制度', href: '/renta-car/compensation' },
   ];
 
   return (

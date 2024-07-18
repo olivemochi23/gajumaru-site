@@ -54,6 +54,7 @@ const carTypes: CarType[] = [
       extension: 1500,
     },
   },
+  /*
   {
     id: 'onebox',
     name: 'ワンボックス',
@@ -66,6 +67,7 @@ const carTypes: CarType[] = [
       extension: 2400,
     },
   },
+  */
 ];
 
 const additionalFees = [
@@ -180,7 +182,7 @@ export default function CarsPage() {
           </ul>
 
           <h4 className="font-bold text-lg mb-2 text-pink-600">特典</h4>
-          <p className="mb-4">ご来店の貸渡および返却の場合、ガジュマルテラスソフトドリンクをお一人一杯ずつプレゼント</p>
+          <p className="mb-4">ご来店の貸渡および返却の場合、ガジュマルテラスソフトドリンクをお一人様一杯ずつプレゼント</p>
 
           <h4 className="font-bold text-lg mb-2 text-pink-600">免責補償制度 加入不可条件</h4>
           <ul className="list-disc list-inside">

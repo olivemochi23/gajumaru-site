@@ -1,4 +1,7 @@
+import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import Section from './section';  // もしSectionコンポーネントを使用している場合
 
 const Guide = () => {
   const spots = [
@@ -34,6 +37,16 @@ const Guide = () => {
         <p className="text-center mt-6 text-pink-600 font-bold">
           ガジュマルレンタカーで島内の観光スポットを巡りましょう！
         </p>
+        <div className="text-center mt-4">
+          <a 
+            href="https://shodoshima.or.jp/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors"
+          >
+            小豆島観光協会のサイトを見る
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const ReservationPage = () => {
           <li>
             <h4 className="font-bold">〇メールでのお問い合わせ　（受付時間／24時間）</h4>
             <p>営業時間外の場合は24時間受付のメールフォームをご利用ください。メールフォームからのお問い合わせではご予約は完了しません。追って当店より、電話かメールにて折り返しのご連絡をさせていただきます。</p>
-            <Link href="/contact-form">
+            <Link href="/renta-car/form">
               <button className="mt-2 bg-pink-500 text-white font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors">
                 メールフォームへ
               </button>

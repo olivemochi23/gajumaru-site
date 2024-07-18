@@ -1,13 +1,13 @@
 import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-  ],
+	],
   prefix: "",
   theme: {
     container: {
@@ -72,21 +72,9 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      backgroundImage: {
-        'contact-background': "url('/背景.png')",
-      },
-      textShadow: {
-        'outline': '0 0 3px #000, 0 0 3px #000, 0 0 3px #000',
-        'outline-lg': '0 0 8px #000, 0 0 8px #000, 0 0 8px #000',
-        'white-outline': '2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 2px 0 #fff, 2px 0 0 #fff, 0 -2px 0 #fff, -2px 0 0 #fff',
-      },
     },
   },
-  
-  plugins: [
-    require('tailwindcss-animate'),
-    require('tailwindcss-textshadow')
-],
-}
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
 
 export default config

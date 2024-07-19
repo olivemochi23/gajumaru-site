@@ -120,7 +120,7 @@ const FormPage = () => {
         </div>
 
         <div>
-          <Button type="submit" className="bg-pink-500 text-white">確認</Button>
+          <Button type="submit" className="bg-pink-500 text-white">送信</Button>
         </div>
       </form>
     </div>

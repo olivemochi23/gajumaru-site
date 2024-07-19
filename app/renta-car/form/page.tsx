@@ -100,16 +100,16 @@ const FormPage = () => {
           <Label>ご希望の車種*</Label>
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <Checkbox id="k-class" />
-              <Label htmlFor="k-class">Kクラス(軽4人乗り)</Label>
+              <Checkbox id="mini-convertible" />
+              <Label htmlFor="mini-convertible">BMW Mini コンバーチブル(5人乗り)</Label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="s-class" />
-              <Label htmlFor="s-class">Sクラス(5人乗り)</Label>
+              <Checkbox id="kei" />
+              <Label htmlFor="kei">軽自動車(4人乗り)</Label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="sp-class" />
-              <Label htmlFor="sp-class">SPクラス(7人乗り)</Label>
+              <Checkbox id="compact" />
+              <Label htmlFor="compact">コンパクトタイプ(5人乗り)</Label>
             </div>
           </div>
         </div>

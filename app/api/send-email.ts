@@ -1,53 +1,90 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
+import { google } from 'googleapis';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const { name, furigana, email, tel, inquiryType, pickupDate, returnDate, pickupLocation, returnLocation, carTypes, remarks } = req.body;
+const OAuth2 = google.auth.OAuth2;
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+interface Formdata {
+  name: string;
+  furigana: string;
+  email: string;
+  tel: string;
+  inquiryType: string;
+  pickupDate: string;
+  returnDate: string;
+  pickupLocation: string;
+  returnLocation: string;
+  carTypes: string[];
+  remarks: string;
+}
+
+const createTransporter = async (): Promise<nodemailer.Transporter> => {
+  const oauth2Client = new OAuth2(
+    process.env.GMAIL_CLIENT_ID,
+    process.env.GMAIL_CLIENT_SECRET,
+    'https://developers.google.com/oauthplayground'
+  );
+
+  oauth2Client.setCredentials({
+    refresh_token: process.env.GMAIL_REFRESH_TOKEN,
+  });
+
+  const accessToken = await oauth2Client.getAccessToken();
+
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.EMAIL_USER,
+      accessToken: accessToken.token!,
+      clientId: process.env.GMAIL_CLIENT_ID,
+      clientSecret: process.env.GMAIL_CLIENT_SECRET,
+      refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+    },
+  });
+};
+
+const sendEmail = async (
+  formData: Formdata
+): Promise<{ success: boolean; error?: Error }> => {
+  try {
+    const transporter = await createTransporter();
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'gajumaru.renta2024@gmail.com',
+      to: 'magnis.corporation@gmail.com', // 管理者メールアドレス
       subject: 'レンタカー予約・お問い合わせ',
       text: `
-        名前: ${name}
-        フリガナ: ${furigana}
-        メールアドレス: ${email}
-        電話番号: ${tel}
-        お問い合わせ内容: ${inquiryType}
-        貸出日時: ${pickupDate}
-        返却日時: ${returnDate}
-        貸出場所: ${pickupLocation}
-        返却場所: ${returnLocation}
-        希望車種: ${carTypes.join(', ')}
-        備考: ${remarks}
+        名前: ${formData.name}
+        フリガナ: ${formData.furigana}
+        メールアドレス: ${formData.email}
+        電話番号: ${formData.tel}
+        お問い合わせ内容: ${formData.inquiryType}
+        貸出日時: ${formData.pickupDate}
+        返却日時: ${formData.returnDate}
+        貸出場所: ${formData.pickupLocation}
+        返却場所: ${formData.returnLocation}
+        希望車種: ${formData.carTypes.join(', ')}
+        備考: ${formData.remarks}
       `,
     };
 
     const autoReplyOptions = {
       from: process.env.EMAIL_USER,
-      to: email,
+      to: formData.email,
       subject: 'お問い合わせありがとうございます',
       text: `
-        ${name} 様
+        ${formData.name} 様
 
         この度は小豆島ガジュマルレンタカーにお問い合わせいただき、誠にありがとうございます。
         以下の内容でお問い合わせを承りました。
 
-        お問い合わせ内容: ${inquiryType}
-        貸出日時: ${pickupDate}
-        返却日時: ${returnDate}
-        貸出場所: ${pickupLocation}
-        返却場所: ${returnLocation}
-        希望車種: ${carTypes.join(', ')}
+        お問い合わせ内容: ${formData.inquiryType}
+        貸出日時: ${formData.pickupDate}
+        返却日時: ${formData.returnDate}
+        貸出場所: ${formData.pickupLocation}
+        返却場所: ${formData.returnLocation}
+        希望車種: ${formData.carTypes.join(', ')}
 
         内容を確認の上、担当者より折り返しご連絡させていただきます。
         今しばらくお待ちくださいますようお願い申し上げます。
@@ -60,12 +97,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `,
     };
 
-    try {
-      await transporter.sendMail(mailOptions);
-      await transporter.sendMail(autoReplyOptions);
-      res.status(200).json({ message: 'Email sent successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Failed to send email' });
+    await Promise.all([
+      transporter.sendMail(mailOptions),
+      transporter.sendMail(autoReplyOptions),
+    ]);
+
+    return { success: true };
+  } catch (error) {
+    console.error('メール送信エラー:', error);
+    return { success: false, error };
+  }
+};
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
+  if (req.method === 'POST') {
+    const formData = req.body as Formdata;
+    const result = await sendEmail(formData);
+
+    if (result.success) {
+      res.status(200).json({ message: '送信成功' });
+    } else {
+      res.status(500).json({ message: '送信失敗', error: result.error });
     }
   } else {
     res.setHeader('Allow', ['POST']);

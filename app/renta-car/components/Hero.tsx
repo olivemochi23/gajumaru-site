@@ -9,7 +9,7 @@ const Hero = () => {
 
       <div className="absolute inset-0 flex items-center justify-center ">
         <div className="text-center p-4 rounded-lg">
-        <h2 className="text-lg font-bold text-pink-500 text-shadow-white-outline">
+        <h2 className="text-lg font-bold text-pink-500 text-shadow-white-strong">
           小豆島の観光体験をもっと快適に！<br />
           ワンランク上の旅を楽しむなら小豆島ガジュマルレンタカーで決まり！
         </h2>

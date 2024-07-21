@@ -72,9 +72,22 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      textShadow: {
+        'white-strong': '0 0 3px #fff, 0 0 5px #fff, 0 0 7px #fff',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow-white-strong': {
+          textShadow: '0 0 3px #fff, 0 0 5px #fff, 0 0 7px #fff',
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
 } satisfies Config
 
 export default config

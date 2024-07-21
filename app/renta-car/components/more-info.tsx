@@ -16,6 +16,7 @@ const MoreInfo = () => {
     {
       title: 'ガジュマルレンタカー概要',
       content: '小豆島に特化したレンタカーサービスを提供しています。',
+      link: '/renta-car/about'
     },
   ];
 

@@ -10,7 +10,7 @@ const Contact = () => {
       subTitle="ご質問やご不明点がございましたら、お気軽にお問い合わせください。"
       className="bg-pink-200 rounded-3xl my-8 mx-4"
     >
-      <div className="bg-white p-6 rounded-xl shadow-md my-8 mx-80">
+      <div className="bg-white p-6 rounded-xl shadow-md my-8 mx-4">
         <div className="w-full max-w-md space-y-4 mx-auto">
           <Button variant="outline" className="w-full justify-start hover:bg-pink-100" asChild>
             <a href="tel:0120-544-960">

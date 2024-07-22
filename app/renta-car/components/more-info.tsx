@@ -12,11 +12,12 @@ const MoreInfo = () => {
     {
       title: 'ガジュマルレンタカー概要',
       content: '小豆島に特化したレンタカーサービスを提供しています。',
+      link: '/renta-car/about'
     },
   ];
 
   const guideButtons = [
-    { title: '予約方法', href: '/renta-car/reservation' },
+    { title: '予約方法', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaxqMeVpJyl_3kHV0rhT2OO6bndmwpx0zCfv8RRsH2FZhUvg/viewform?usp=sf_link' },
     { title: 'お貸出方法', href: '/renta-car/rental' },
     { title: 'ご返却方法', href: '/renta-car/return' },
     { title: '運転免許証について', href: '/renta-car/license' },
@@ -32,16 +33,21 @@ const MoreInfo = () => {
       <div className="bg-white p-6 rounded-xl shadow-md mb-8 mx-4">
         <h3 className="text-xl font-bold text-pink-600 mb-3">ご利用案内</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {guideButtons.map((button, index) => (
-            <Link key={index} href={button.href} className="block">
+        {guideButtons.map((button, index) => (
+            <a 
+              key={index} 
+              href={button.href} 
+              target={button.href.startsWith('http') ? "_blank" : "_self"}
+              rel={button.href.startsWith('http') ? "noopener noreferrer" : ""}
+              className="block"
+            >
               <div className="bg-pink-100 p-4 rounded-xl text-center cursor-pointer hover:bg-pink-200 transition-colors">
                 <span className="text-pink-600 font-bold">{button.title}</span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
-  
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4">
         {infoSections.map((section, index) => (
           <div key={index} className="bg-white p-6 rounded-xl shadow-md">

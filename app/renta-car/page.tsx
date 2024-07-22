@@ -7,6 +7,7 @@ import Header from '@/app/renta-car/components/Header'
 import Hero from '@/app/renta-car/components/Hero'
 import Access from '@/app/renta-car/components/Access'
 import Link from 'next/link'
+import Contact from '@/app/renta-car/components/Contact'
 
 
 const Home = () => {
@@ -45,6 +46,13 @@ const Home = () => {
             <Access />
           </div>
         </section>
+
+        <section id="contact" className="w-screen px-0 relative mb-8">
+          <div className="relative z-10">
+            <Contact />
+          </div>
+        </section>
+        
       </main>
       <Footer />
       <FloatingReservationButton />

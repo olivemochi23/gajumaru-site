@@ -106,11 +106,6 @@ export default function CarsPage() {
                     <li>24時間コース: ¥{car.prices.twentyFourHours.toLocaleString()}</li>
                     <li>契約時間延長: ¥{car.prices.extension.toLocaleString()}</li>
                   </ul>
-                  <Link href={`/renta-car/cars/${car.id}`}>
-                    <button className="bg-pink-500 text-white font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors w-full">
-                      詳細を見る
-                    </button>
-                  </Link>
                 </div>
               </div>
             ))}

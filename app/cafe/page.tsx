@@ -56,7 +56,7 @@ const CafePage: React.FC = () => {
               <a href="tel:0879-62-9879" className="text-pink-800 font-bold text-xs sm:text-sm">店長 伊丹：080-9331-5205</a>
             </div>
           </div>
-          <Button className="sm:hidden text-pink-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button className="sm:hidden bg-pink-500 text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
           </Button>
         </div>

@@ -17,7 +17,7 @@ const MoreInfo = () => {
   ];
 
   const guideButtons = [
-    { title: '予約方法', href: 'https://docs.google.com/forms/d/e/1FAIpQLSeaxqMeVpJyl_3kHV0rhT2OO6bndmwpx0zCfv8RRsH2FZhUvg/viewform?usp=sf_link' },
+    { title: '予約方法', href: 'https://docs.google.com/forms/d/1E1L7l_3BIlZInI4gdCtPV8wMXhvtLnGXMjJNToub3CI/edit' },
     { title: 'お貸出方法', href: '/renta-car/rental' },
     { title: 'ご返却方法', href: '/renta-car/return' },
     { title: '運転免許証について', href: '/renta-car/license' },

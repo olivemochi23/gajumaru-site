@@ -8,30 +8,58 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation';
 
 const FormPage = () => {
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
+  
+    const email = formData.get('email');
+    const confirmEmail = formData.get('confirmEmail');
+  
+    if (email !== confirmEmail) {
+      alert('メールアドレスが一致しません。');
+      return;
+    }
+  
+    // carTypes を配列として取得
+    const carTypes: string[] = [];
+    Array.from(formData.entries()).forEach(([key, value]) => {
+      if (key === 'carTypes' && value) {
+        carTypes.push(value as string);
+      }
+    });
+  
     try {
+      console.log('フォームデータ送信開始');
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData)),
+        body: JSON.stringify({ ...Object.fromEntries(formData), carTypes }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
+    
+      console.log('レスポンスステータス:', response.status);
+      const responseData = await response.json();
+      console.log('レスポンスデータ:', responseData);
+    
       if (response.ok) {
         setIsSubmitted(true);
-
+        setTimeout(() => {
+          router.push('/thank-you');
+        }, 3000);
       } else {
-        // エラー処理
-        console.error('Failed to send email');
+        console.error('Failed to send email:', responseData);
+        alert(`メールの送信に失敗しました。エラー: ${responseData.message}`);
       }
     } catch (error) {
       console.error('Error:', error);
+      alert(`エラーが発生しました。${error.message}`);
     }
   };
 
@@ -41,27 +69,36 @@ const FormPage = () => {
       
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
-          <Label htmlFor="name">お名前*</Label>
-          <Input id="name" name="name" required />
+          <Label htmlFor="name">お名前</Label>
+          <Input type="text" id="name" name="name" required />
         </div>
+
         <div>
-          <Label htmlFor="furigana">フリガナ*</Label>
-          <Input id="furigana" name="furigana" required />
+          <Label htmlFor="furigana">フリガナ</Label>
+          <Input type="text" id="furigana" name="furigana" required />
         </div>
+
         <div>
-          <Label htmlFor="email">メールアドレス*</Label>
-          <Input id="email" name="email" type="email" required />
+          <Label htmlFor="email">メールアドレス</Label>
+          <Input type="email" id="email" name="email" required />
         </div>
+
         <div>
-          <Label htmlFor="confirmEmail">メールアドレス（確認用）*</Label>
-          <Input id="confirmEmail" name="confirmEmail" type="email" required />
+          <Label htmlFor="confirmEmail">メールアドレス（確認用）</Label>
+          <Input type="email" id="confirmEmail" name="confirmEmail" required />
         </div>
+
         <div>
-          <Label>お問い合わせ内容*</Label>
-          <RadioGroup name="inquiryType" defaultValue="reservation">
+          <Label htmlFor="tel">電話番号</Label>
+          <Input type="tel" id="tel" name="tel" required />
+        </div>
+
+        <div>
+          <Label>お問い合わせ内容</Label>
+          <RadioGroup defaultValue="reservation" name="inquiryType">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="reservation" id="reservation" />
-              <Label htmlFor="reservation">ご予約</Label>
+              <Label htmlFor="reservation">予約</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="inquiry" id="inquiry" />
@@ -69,40 +106,49 @@ const FormPage = () => {
             </div>
           </RadioGroup>
         </div>
+
         <div>
-          <Label htmlFor="pickupDate">貸出日時*</Label>
-          <Input id="pickupDate" name="pickupDate" type="datetime-local" required />
+          <Label htmlFor="pickupDate">貸出日時</Label>
+          <Input type="datetime-local" id="pickupDate" name="pickupDate" required />
         </div>
+
         <div>
-          <Label htmlFor="returnDate">返却日時*</Label>
-          <Input id="returnDate" name="returnDate" type="datetime-local" required />
+          <Label htmlFor="returnDate">返却日時</Label>
+          <Input type="datetime-local" id="returnDate" name="returnDate" required />
         </div>
+
         <div>
-          <Label htmlFor="pickupLocation">貸出場所*</Label>
+          <Label htmlFor="pickupLocation">貸出場所</Label>
           <Select name="pickupLocation">
             <SelectTrigger>
-              <SelectValue placeholder="選択してください" />
+              <SelectValue placeholder="貸出場所を選択してください" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="store">店舗</SelectItem>
-              <SelectItem value="port">港</SelectItem>
+              <SelectItem value="shop">店舗</SelectItem>
+              <SelectItem value="tonosho">土庄港</SelectItem>
+              <SelectItem value="ikeda">池田港</SelectItem>
+              <SelectItem value="kusakabe">草壁港</SelectItem>
             </SelectContent>
           </Select>
         </div>
+
         <div>
-          <Label htmlFor="returnLocation">返却場所*</Label>
+          <Label htmlFor="returnLocation">返却場所</Label>
           <Select name="returnLocation">
             <SelectTrigger>
-              <SelectValue placeholder="選択してください" />
+              <SelectValue placeholder="返却場所を選択してください" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="store">店舗</SelectItem>
-              <SelectItem value="port">港</SelectItem>
+              <SelectItem value="shop">店舗</SelectItem>
+              <SelectItem value="tonosho">土庄港</SelectItem>
+              <SelectItem value="ikeda">池田港</SelectItem>
+              <SelectItem value="kusakabe">草壁港</SelectItem>
             </SelectContent>
           </Select>
         </div>
+
         <div>
-          <Label>希望車種（複数選択可）*</Label>
+          <Label>希望車種（複数選択可）</Label>
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
               <Checkbox id="mini" name="carTypes" value="mini" />
@@ -118,25 +164,22 @@ const FormPage = () => {
             </div>
           </div>
         </div>
+
         <div>
           <Label htmlFor="remarks">備考</Label>
           <Textarea id="remarks" name="remarks" />
         </div>
-        <div>
-          <Button type="submit" className="bg-pink-500 text-white w-full">送信</Button>
-        </div>
+
+        <Button type="submit" className="bg-pink-500 text-white">送信</Button>
       </form>
-  
+
       {isSubmitted && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-xl">
-            <h2 className="text-2xl font-bold mb-4">送信完了</h2>
-            <p>お問い合わせありがとうございます。内容を確認の上、担当者より折り返しご連絡させていただきます。</p>
-            <Button onClick={() => setIsSubmitted(false)} className="mt-4 bg-pink-500 text-white w-full">閉じる</Button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg">
+            <p>送信が完了しました。</p>
           </div>
         </div>
       )}
-
     </div>
   );
 };

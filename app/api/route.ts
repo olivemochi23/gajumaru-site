@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
+import { NextRequest, NextResponse } from 'next/server';
 
 const OAuth2 = google.auth.OAuth2;
 
@@ -14,7 +14,7 @@ interface Formdata {
   returnDate: string;
   pickupLocation: string;
   returnLocation: string;
-  carTypes: string[];
+  carTypes: string[]; // carTypes を配列として定義
   remarks: string;
 }
 
@@ -64,7 +64,7 @@ const sendEmail = async (
         返却日時: ${formData.returnDate}
         貸出場所: ${formData.pickupLocation}
         返却場所: ${formData.returnLocation}
-        希望車種: ${formData.carTypes.join(', ')}
+        希望車種: ${formData.carTypes.join(', ')} // carTypes をカンマ区切りで表示
         備考: ${formData.remarks}
       `,
     };
@@ -84,7 +84,7 @@ const sendEmail = async (
         返却日時: ${formData.returnDate}
         貸出場所: ${formData.pickupLocation}
         返却場所: ${formData.returnLocation}
-        希望車種: ${formData.carTypes.join(', ')}
+        希望車種: ${formData.carTypes.join(', ')} // carTypes をカンマ区切りで表示
 
         内容を確認の上、担当者より折り返しご連絡させていただきます。
         今しばらくお待ちくださいますようお願い申し上げます。
@@ -109,21 +109,22 @@ const sendEmail = async (
   }
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
-  if (req.method === 'POST') {
-    const formData = req.body as Formdata;
+export async function POST(req: NextRequest) {
+  try {
+    console.log('APIルート: リクエスト受信');
+    const formData = await req.json();
+    console.log('フォームデータ:', formData);
     const result = await sendEmail(formData);
 
     if (result.success) {
-      res.status(200).json({ message: '送信成功' });
+      console.log('メール送信成功');
+      return NextResponse.json({ message: '送信成功' }, { status: 200 });
     } else {
-      res.status(500).json({ message: '送信失敗', error: result.error });
+      console.error('メール送信失敗:', result.error);
+      return NextResponse.json({ message: '送信失敗', error: result.error }, { status: 500 });
     }
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+  } catch (error) {
+    console.error('APIルートエラー:', error);
+    return NextResponse.json({ message: 'サーバーエラー', error: error.message }, { status: 500 });
   }
 }

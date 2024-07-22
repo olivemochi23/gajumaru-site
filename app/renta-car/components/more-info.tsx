@@ -10,10 +10,6 @@ const MoreInfo = () => {
       link: '/renta-car/cars'
     },
     {
-      title: '出発可能場所',
-      content: '土庄港、池田港にて車両をお渡しします。',
-    },
-    {
       title: 'ガジュマルレンタカー概要',
       content: '小豆島に特化したレンタカーサービスを提供しています。',
     },

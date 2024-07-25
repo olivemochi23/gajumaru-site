@@ -14,6 +14,11 @@ const MoreInfo = () => {
       content: '小豆島に特化したレンタカーサービスを提供しています。',
       link: '/renta-car/about'
     },
+    {
+      title: '定款',
+      content: 'ガジュマルレンタカーの定款をご覧いただけます。',
+      link: '/renta-car/articles-of-incorporation'
+    },
   ];
 
   const guideButtons = [

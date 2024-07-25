@@ -1,7 +1,8 @@
 import React from 'react';
 import Section from './section';
 import { Button } from "@/components/ui/button";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Instagram } from "lucide-react";
+import Image from 'next/image';
 
 const Contact = () => {
   return (
@@ -24,6 +25,20 @@ const Contact = () => {
               <span>gajumaru.renta2024@gmail.com</span>
             </a>
           </Button>
+          <Button variant="outline" className="w-full justify-start hover:bg-pink-100" asChild>
+            <a href="https://www.instagram.com/gajumaru_renta_car/" target="_blank" rel="noopener noreferrer">
+              <Instagram className="mr-2 h-4 w-4 text-pink-600" />
+              <span>@gajumaru_renta_car</span>
+            </a>
+          </Button>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Image
+            src="/instagram_qr.png"
+            alt="Instagram QRコード"
+            width={200}
+            height={200}
+          />
         </div>
       </div>
     </Section>

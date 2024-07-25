@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@edge-csrf/nextjs": "^2.3.0-rc1",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@heroicons/react": "^2.1.3",
     "@mantine/hooks": "^7.8.1",
@@ -28,6 +29,7 @@
     "bootstrap": "^5.3.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "edge-csrf": "^2.0.0-rc7",
     "google-auth-library": "^9.11.0",
     "googleapis": "^140.0.1",
     "install": "^0.13.0",
@@ -43,7 +45,8 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-textshadow": "^2.1.3",
-    "textarea": "^0.3.0"
+    "textarea": "^0.3.0",
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@types/node": "^20",

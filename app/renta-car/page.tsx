@@ -8,6 +8,8 @@ import Hero from '@/app/renta-car/components/Hero'
 import Access from '@/app/renta-car/components/Access'
 import Link from 'next/link'
 import Contact from '@/app/renta-car/components/Contact'
+import Announcements from '@/app/renta-car/components/Announcements'
+
 
 
 const Home = () => {
@@ -18,6 +20,12 @@ const Home = () => {
         <section id="hero" className="w-screen px-0 relative">
           <div className="relative z-10">
             <Hero />
+          </div>
+        </section>
+
+        <section id="announcements" className="w-screen px-0 relative my-8">
+          <div className="relative z-10">
+            <Announcements />
           </div>
         </section>
 

@@ -138,7 +138,7 @@ export default function CarsPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-pink-100">
-                <th className="p-2 text-left">場所</th>
+                <th className="p-2 text-left">各港</th>
                 <th className="p-2 text-right">片道料金</th>
                 <th className="p-2 text-right">往復料金</th>
               </tr>
@@ -150,7 +150,7 @@ export default function CarsPage() {
                 <td className="p-2 text-right">¥1,500</td>
               </tr>
               <tr>
-                <td className="p-2">坂手港、オリビアンホテル</td>
+                <td className="p-2">坂手港</td>
                 <td className="p-2 text-right">¥1,500</td>
                 <td className="p-2 text-right">¥2,500</td>
               </tr>

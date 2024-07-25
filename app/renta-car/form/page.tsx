@@ -10,8 +10,9 @@ import {
 } from './form-contact.utils'
 import { useReCaptcha } from 'next-recaptcha-v3'
 
-export default function ContactForm({ csrfToken }: { csrfToken: string }) {
+export default function ContactForm() {
   const { executeRecaptcha } = useReCaptcha()
+  const [csrfToken, setCsrfToken] = useState<string>('')
 
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')

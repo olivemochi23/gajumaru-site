@@ -7,9 +7,27 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 
+// フォームデータの型定義
+interface FormData {
+  name: string;
+  furigana: string;
+  email: string;
+  tel: string;
+  inquiryType: string;
+  pickupDate: string;
+  returnDate: string;
+  carTypes: string[];
+  pickupLocation: string;
+  returnLocation: string;
+  options: string[];
+  driverAge: string;
+  licenseType: string;
+  remarks: string;
+}
+
 const FormPage = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     furigana: '',
     email: '',
@@ -20,6 +38,9 @@ const FormPage = () => {
     pickupLocation: '',
     returnLocation: '',
     carTypes: [],
+    options: [],
+    driverAge: '',
+    licenseType: '',
     remarks: ''
   });
 
@@ -65,26 +86,7 @@ const FormPage = () => {
       subTitle="以下のフォームに必要事項をご記入ください"
       className="bg-pink-200 rounded-3xl my-8 mx-4"
     >
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">お名前</label>
-          <Input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
-        </div>
-
-        <div>
-          <label htmlFor="furigana" className="block text-sm font-medium text-gray-700">フリガナ</label>
-          <Input type="text" id="furigana" name="furigana" value={formData.furigana} onChange={handleInputChange} required />
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">メールアドレス</label>
-          <Input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
-        </div>
-
-        <div>
-          <label htmlFor="tel" className="block text-sm font-medium text-gray-700">電話番号</label>
-          <Input type="tel" id="tel" name="tel" value={formData.tel} onChange={handleInputChange} required />
-        </div>
+      <form  onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4 mx-4"> 
 
         <div>
           <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700">お問い合わせ内容</label>
@@ -101,6 +103,30 @@ const FormPage = () => {
             <option value="問い合わせ">問い合わせ</option>
           </select>
         </div>
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">お名前</label>
+          <Input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+        </div>
+
+        <div>
+          <label htmlFor="furigana" className="block text-sm font-medium text-gray-700">フリガナ</label>
+          <Input type="text" id="furigana" name="furigana" value={formData.furigana} onChange={handleInputChange} required />
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">メールアドレス</label>
+          <Input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">メールアドレス(確認用)</label>
+          <Input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
+        </div>
+
+        <div>
+          <label htmlFor="tel" className="block text-sm font-medium text-gray-700">電話番号</label>
+          <Input type="tel" id="tel" name="tel" value={formData.tel} onChange={handleInputChange} required />
+        </div>
+
 
         <div>
           <label htmlFor="pickupDate" className="block text-sm font-medium text-gray-700">貸出日時</label>
@@ -110,16 +136,6 @@ const FormPage = () => {
         <div>
           <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700">返却日時</label>
           <Input type="datetime-local" id="returnDate" name="returnDate" value={formData.returnDate} onChange={handleInputChange} required />
-        </div>
-
-        <div>
-          <label htmlFor="pickupLocation" className="block text-sm font-medium text-gray-700">貸出場所</label>
-          <Input type="text" id="pickupLocation" name="pickupLocation" value={formData.pickupLocation} onChange={handleInputChange} required />
-        </div>
-
-        <div>
-          <label htmlFor="returnLocation" className="block text-sm font-medium text-gray-700">返却場所</label>
-          <Input type="text" id="returnLocation" name="returnLocation" value={formData.returnLocation} onChange={handleInputChange} required />
         </div>
 
         <div>
@@ -150,7 +166,95 @@ const FormPage = () => {
         </div>
 
         <div>
-          <label htmlFor="remarks" className="block text-sm font-medium text-gray-700">備考</label>
+          <label htmlFor="pickupLocation" className="block text-sm font-medium text-gray-700">出発場所</label>
+          <select
+            id="pickupLocation"
+            name="pickupLocation"
+            value={formData.pickupLocation}
+            onChange={handleInputChange}
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            required
+          >
+            <option value="">選択してください</option>
+            <option value="池田港">池田港</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="returnLocation" className="block text-sm font-medium text-gray-700">返却場所</label>
+          <select
+            id="returnLocation"
+            name="returnLocation"
+            value={formData.returnLocation}
+            onChange={handleInputChange}
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            required
+          >
+            <option value="">選択してください</option>
+            <option value="池田港">池田港</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">オプション</label>
+          <div className="mt-2 space-y-2">
+            {['チャイルドシート／ジュニアシート', '免責補償制度（スタンダード）', '免責補償制度（フルカバー）', 'オプションなし'].map((option) => (
+              <div key={option} className="flex items-center">
+                <Checkbox
+                  id={option}
+                  name={option}
+                  checked={formData.options.includes(option)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setFormData(prev => ({ ...prev, options: [...prev.options, option] }));
+                    } else {
+                      setFormData(prev => ({ ...prev, options: prev.options.filter(item => item !== option) }));
+                    }
+                  }}
+                />
+                <label htmlFor={option} className="ml-2 text-sm text-gray-700">{option}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="driverAge" className="block text-sm font-medium text-gray-700">運転者の年齢</label>
+          <select
+            id="driverAge"
+            name="driverAge"
+            value={formData.driverAge}
+            onChange={handleInputChange}
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            required
+          >
+            <option value="">選択してください</option>
+            <option value="21歳未満">21歳未満</option>
+            <option value="免許取得１年未満">免許取得１年未満</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="licenseType" className="block text-sm font-medium text-gray-700">運転免許証の種類</label>
+          <select
+            id="licenseType"
+            name="licenseType"
+            value={formData.licenseType}
+            onChange={handleInputChange}
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            required
+          >
+            <option value="">選択してください</option>
+            <option value="日本の運転免許証">日本の運転免許証</option>
+            <option value="国際運転免許証">国際運転免許証</option>
+            <option value="外国運転免許証（対象国のみ）">外国運転免許証（対象国のみ）</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="remarks" className="block text-sm font-medium text-gray-700">特記事項・ご要望</label>
           <textarea
             id="remarks"
             name="remarks"
@@ -161,7 +265,8 @@ const FormPage = () => {
           ></textarea>
         </div>
 
-        <Button type="submit" className="w-full">送信</Button>
+ 
+        <Button type="submit" className="w-full bg-pink-600">送信</Button>
       </form>
     </Section>
   );

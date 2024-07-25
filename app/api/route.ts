@@ -1,8 +1,27 @@
-import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+import { OAuth2Client } from 'google-auth-library';
 
-const OAuth2 = google.auth.OAuth2;
+
+export async function POST(request: NextRequest) {
+  try {
+    console.log('APIルート: リクエスト受信');
+    const formData: Formdata = await request.json();
+    console.log('フォームデータ:', formData);
+    const result = await sendEmail(formData);
+
+    if (result.success) {
+      console.log('メール送信成功');
+      return NextResponse.json({ message: '送信成功' }, { status: 200 });
+    } else {
+      console.error('メール送信失敗:', result.error);
+      return NextResponse.json({ message: '送信失敗', error: result.error }, { status: 500 });
+    }
+  } catch (error) {
+    console.error('APIルートエラー:', error);
+    return NextResponse.json({ message: 'サーバーエラー', error: error.message }, { status: 500 });
+  }
+}
 
 interface Formdata {
   name: string;
@@ -19,7 +38,7 @@ interface Formdata {
 }
 
 const createTransporter = async (): Promise<nodemailer.Transporter> => {
-  const oauth2Client = new OAuth2(
+  const oauth2Client = new OAuth2Client(
     process.env.GMAIL_CLIENT_ID,
     process.env.GMAIL_CLIENT_SECRET,
     'https://developers.google.com/oauthplayground'
@@ -109,22 +128,3 @@ const sendEmail = async (
   }
 };
 
-export async function POST(req: NextRequest) {
-  try {
-    console.log('APIルート: リクエスト受信');
-    const formData = await req.json();
-    console.log('フォームデータ:', formData);
-    const result = await sendEmail(formData);
-
-    if (result.success) {
-      console.log('メール送信成功');
-      return NextResponse.json({ message: '送信成功' }, { status: 200 });
-    } else {
-      console.error('メール送信失敗:', result.error);
-      return NextResponse.json({ message: '送信失敗', error: result.error }, { status: 500 });
-    }
-  } catch (error) {
-    console.error('APIルートエラー:', error);
-    return NextResponse.json({ message: 'サーバーエラー', error: error.message }, { status: 500 });
-  }
-}

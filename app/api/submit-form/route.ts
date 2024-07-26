@@ -1,19 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { google } from 'googleapis';
 
 console.log('環境変数チェック:');
 console.log('EMAIL_USER:', process.env.EMAIL_USER);
-console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '設定されています' : '設定されていません');
+console.log('GMAIL_CLIENT_ID:', process.env.GMAIL_CLIENT_ID ? '設定されています' : '設定されていません');
+console.log('GMAIL_CLIENT_SECRET:', process.env.GMAIL_CLIENT_SECRET ? '設定されています' : '設定されていません');
+console.log('GMAIL_REFRESH_TOKEN:', process.env.GMAIL_REFRESH_TOKEN ? '設定されています' : '設定されていません');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new OAuth2(
+  process.env.GMAIL_CLIENT_ID,
+  process.env.GMAIL_CLIENT_SECRET,
+  'https://developers.google.com/oauthplayground'
+);
+
+oauth2Client.setCredentials({
+  refresh_token: process.env.GMAIL_REFRESH_TOKEN
 });
 
 interface Formdata {
@@ -64,6 +68,34 @@ export async function POST(request: NextRequest) {
 
 const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?: Error }> => {
   try {
+    const accessToken = await new Promise<string>((resolve, reject) => {
+      oauth2Client.getAccessToken((err, token) => {
+        if (err) {
+          console.error('アクセストークン取得エラー:', err);
+          reject('Failed to create access token');
+        } else if (token) {
+          console.log('アクセストークン取得成功');
+          resolve(token);
+        } else {
+          reject('No token received');
+        }
+      });
+    });
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.EMAIL_USER,
+        clientId: process.env.GMAIL_CLIENT_ID,
+        clientSecret: process.env.GMAIL_CLIENT_SECRET,
+        refreshToken: process.env.GMAIL_REFRESH_TOKEN,
+        accessToken: accessToken
+      },
+      logger: true,
+      debug: true
+    });
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'gajumaru.renta2024@gmail.com',
@@ -89,6 +121,7 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
     const autoReplyOptions = {
       from: process.env.EMAIL_USER,
       to: formData.email,
+      cc: 'gajumaru.renta2024@gmail.com', // ここにCCを追加
       subject: 'お問い合わせありがとうございます',
       text: `
         ${formData.name} 様
@@ -127,6 +160,13 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
     return { success: true };
   } catch (error) {
     console.error('詳細なメール送信エラー:', error);
+    if (error instanceof Error) {
+      console.error('エラーメッセージ:', error.message);
+      console.error('エラースタック:', error.stack);
+    }
+    if ('response' in (error as any)) {
+      console.error('SMTP応答:', (error as any).response);
+    }
     return { success: false, error: error as Error };
   }
 };

@@ -22,7 +22,7 @@ const MoreInfo = () => {
   ];
 
   const guideButtons = [
-    { title: '予約方法', href: 'https://docs.google.com/forms/d/1E1L7l_3BIlZInI4gdCtPV8wMXhvtLnGXMjJNToub3CI/edit' },
+    { title: '予約方法', href: '/renta-car/form' },
     { title: 'お貸出方法', href: '/renta-car/rental' },
     { title: 'ご返却方法', href: '/renta-car/return' },
     { title: '運転免許証について', href: '/renta-car/license' },

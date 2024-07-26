@@ -96,65 +96,100 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
       debug: true
     });
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'gajumaru.renta2024@gmail.com',
-      cc: process.env.EMAIL_USER,
-      subject: 'レンタカー予約・お問い合わせ',
-      text: `
-        名前: ${formData.name}
-        フリガナ: ${formData.furigana}
-        メールアドレス: ${formData.email}
-        電話番号: ${formData.tel}
-        お問い合わせ内容: ${formData.inquiryType}
-        貸出日時: ${formData.pickupDate}
-        返却日時: ${formData.returnDate}
-        貸出場所: ${formData.pickupLocation}${formData.pickupLocationOther ? ` (${formData.pickupLocationOther})` : ''}
-        返却場所: ${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}
-        運転者の年齢: ${formData.driverAge}
-        運転免許証の種類: ${formData.licenseType}
-        オプション: ${formData.options?.join(', ') || 'なし'}
-        特記事項・ご要望: ${formData.specialRequests || 'なし'}
-      `,
-    };
-
     const autoReplyOptions = {
       from: process.env.EMAIL_USER,
       to: formData.email,
-      cc: 'gajumaru.renta2024@gmail.com', // ここにCCを追加
-      subject: 'お問い合わせありがとうございます',
-      text: `
-        ${formData.name} 様
+      cc: 'gajumaru.renta2024@gmail.com',
+      subject: 'レンタカー予約・お問い合わせ受付完了',
+      html: `
+        <h2>${formData.name} 様</h2>
 
-        この度は小豆島ガジュマルレンタカーにお問い合わせいただき、誠にありがとうございます。
+        <p>この度は小豆島ガジュマルレンタカーにお問い合わせいただき、誠にありがとうございます。</p>
 
-        お問い合わせ内容: ${formData.inquiryType}
-        貸出日時: ${formData.pickupDate}
-        返却日時: ${formData.returnDate}
-        貸出場所: ${formData.pickupLocation}${formData.pickupLocationOther ? ` (${formData.pickupLocationOther})` : ''}
-        返却場所: ${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}
-        運転者の年齢: ${formData.driverAge}
-        運転免許証の種類: ${formData.licenseType}
-        オプション: ${formData.options?.join(', ') || 'なし'}
+        <p>以下の内容で予約・お問い合わせを承りました。</p>
 
-        内容を確認の上、担当者より折り返しご連絡させていただきます。
-        今しばらくお待ちくださいますようお願い申し上げます。
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;">項目</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;">内容</th>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">お名前</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.name}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">フリガナ</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.furigana}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">メールアドレス</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.email}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">電話番号</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.tel}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">お問い合わせ内容</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.inquiryType}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">貸出日時</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.pickupDate}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">返却日時</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.returnDate}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">貸出場所</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.pickupLocation}${formData.pickupLocationOther ? ` (${formData.pickupLocationOther})` : ''}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">返却場所</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">車種</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.carTypes.join(', ') || 'なし'}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">運転者の年齢</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.driverAge}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">運転免許証の種類</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.licenseType}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">オプション</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.options?.join(', ') || 'なし'}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項・ご要望</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.specialRequests || 'なし'}</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">備考</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.remarks || 'なし'}</td>
+          </tr>
+        </table>
 
-        ※このメールは自動送信されています。このメールへの返信はできませんので、ご了承ください。
+        <p>内容を確認の上、担当者より折り返しご連絡させていただきます。今しばらくお待ちくださいますようお願い申し上げます。</p>
 
-        小豆島ガジュマルレンタカー
-        TEL: 0120-544-960
+        <p>※このメールは自動送信されています。このメールへの返信はできませんので、ご了承ください。</p>
+
+        <p>
+        小豆島ガジュマルレンタカー<br>
+        TEL: 0120-544-960<br>
         営業時間: 8:30～19:00
+        </p>
       `,
     };
 
     console.log('メール送信開始');
-    const [adminMailResult, autoReplyResult] = await Promise.all([
-      transporter.sendMail(mailOptions),
-      transporter.sendMail(autoReplyOptions),
-    ]);
+    const autoReplyResult = await transporter.sendMail(autoReplyOptions);
 
-    console.log('管理者メール結果:', adminMailResult);
     console.log('自動返信メール結果:', autoReplyResult);
 
     return { success: true };

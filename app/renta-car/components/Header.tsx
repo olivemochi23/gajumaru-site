@@ -50,13 +50,6 @@ const Header: React.FC = () => {
             小豆島ガジュマルレンタカー
           </h1>
         </Link>
-        <div className="hidden sm:block">
-          <p className="bg-orange-600 text-white font-bold px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-pink-400 mb-2 text-xs">ご予約はメール<br />または<br />お電話にて承ります</p>
-          <p className="bg-orange-600 text-white font-bold text-xs px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-pink-400">Tel : 0120-544-960<br />受付時間 : 8:00-20:00</p>
-        </div>
-        <Button className="md:hidden bg-pink-600 text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
-        </Button>
       </div>
      
       <nav className="hidden md:flex items-center justify-between mt-4 bg-pink-300 py-2 px-4">

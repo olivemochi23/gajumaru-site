@@ -15,8 +15,8 @@ const MoreInfo = () => {
       link: '/renta-car/about'
     },
     {
-      title: '定款',
-      content: 'ガジュマルレンタカーの定款をご覧いただけます。',
+      title: '貸渡約款      ',
+      content: '小豆島ガジュマルレンタカーの約款をご覧いただけます。',
       link: '/renta-car/articles-of-incorporation'
     },
   ];

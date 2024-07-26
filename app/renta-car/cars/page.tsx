@@ -73,7 +73,7 @@ const carTypes: CarType[] = [
 const additionalFees = [
   { name: 'チャイルドシート／ジュニアシート', price: 550, unit: '24時間毎' },
   { name: 'ハイシーズン料金', price: 700, unit: '24時間毎' },
-  { name: '早朝深夜割増料金（～8時、18時～）', price: 500, unit: 'それぞれ' },
+  { name: '早朝深夜割増料金（～9時、18時～）', price: 500, unit: 'それぞれ' },
   { name: '免責補償制度（スタンダード）', price: 1100, unit: '24時間毎' },
   { name: '免責補償制度（フルカバー）', price: 2200, unit: '24時間毎' },
 ];

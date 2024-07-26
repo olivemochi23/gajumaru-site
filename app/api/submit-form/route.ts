@@ -169,10 +169,6 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">特記事項・ご要望</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.specialRequests || 'なし'}</td>
           </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">備考</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.remarks || 'なし'}</td>
-          </tr>
         </table>
 
         <p>内容を確認の上、担当者より折り返しご連絡させていただきます。今しばらくお待ちくださいますようお願い申し上げます。</p>

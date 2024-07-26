@@ -6,7 +6,7 @@ import { FaInstagram, FaLine } from "react-icons/fa";
 export function ButtonWithIcon() {
   return (
     <div className="flex space-x-4">
-    <a href="https://www.instagram.com/gajumaru_0403?igsh=eWg3dTk3dTgxb2Ez" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-shadow duration-300">
+    <a href="https://www.instagram.com/gajumaru_terrace/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-shadow duration-300">
       Instagram
     </a>
     <a href="https://lin.ee/0uS5Fcz" target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-shadow duration-300">

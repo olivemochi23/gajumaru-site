@@ -205,7 +205,6 @@ const FormPage = () => {
             required
           >
             <option value="">選択してください</option>
-            <option value="21歳以上">21歳以上</option>
             <option value="21歳未満">21歳未満</option>
             <option value="免許取得１年未満">免許取得１年未満</option>
           </select>

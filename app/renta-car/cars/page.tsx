@@ -24,10 +24,10 @@ const carTypes: CarType[] = [
     capacity: 5,
     image: '/mini.jpg',
     prices: {
-      sixHours: 6900,
-      twelveHours: 7900,
-      twentyFourHours: 9800,
-      extension: 1800,
+      sixHours: 9900,
+      twelveHours: 11900,
+      twentyFourHours: 18300,
+      extension: 2500,
     },
   },
   {

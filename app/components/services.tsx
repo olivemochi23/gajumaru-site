@@ -10,7 +10,7 @@ export default function Services() {
     style={{
       
     }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 ">
       <Link href="/cafe" className="block border relative rounded-3xl p-6 shadow space-y-3 bg-white hover:shadow-lg transition-shadow duration-300">
   <div className="aspect-video bg-muted relative">
     <Image

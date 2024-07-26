@@ -6,14 +6,30 @@ import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { FiMenu } from 'react-icons/fi'
 import { MdClose } from 'react-icons/md'
+import { Phone, Mail } from 'lucide-react';
+
+const ContactInfo = () => (
+  <div className="bg-pink-500 p-2 rounded-lg">
+    <p className="text-white text-sm font-bold mb-2 text-center">お問い合わせはこちら</p>
+    <div className="flex flex-col items-center">
+      <a href="tel:0120-544-960" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition mb-2">
+        <Phone className="inline-block mr-1 h-4 w-4" />
+        0120-544-960
+      </a>
+      <a href="mailto:gajumaru.renta2024@gmail.com" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition">
+        <Mail className="inline-block mr-1 h-4 w-4" />
+        メール
+      </a>
+    </div>
+  </div>
+);
 
 const navItems = [
   { label: 'お知らせ', href: '#announcements' },
-  { label: 'おすすめレンタカー', href: '#cars' },
+  { label: '車種と料金', href: '/renta-car/cars' },
   { label: '小豆島おすすめスポット', href: '#guide' },
   { label: '詳細情報', href: '#moreInfo' },
   { label: 'アクセス', href: '#access' },
-  { label: 'お問い合わせ', href: '#contact' },
 ];
 
 const Header: React.FC = () => {
@@ -42,17 +58,21 @@ const Header: React.FC = () => {
           {isMenuOpen ? <MdClose className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
         </Button>
       </div>
-      <nav className="hidden md:block mt-4">
-        <ul className="flex flex-wrap justify-center sm:justify-around px-4 sm:px-8 font-bold">
-          {navItems.map((item) => (
-            <li key={item.label} className="m-1">
-              <Link href={item.href} className="bg-pink-500 text-white text-sm sm:text-base px-2 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-pink-400 transition">
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+     
+      <nav className="hidden md:flex items-center justify-between mt-4 bg-pink-300 py-2 px-4">
+  <ul className="flex flex-1 justify-around font-bold mr-4">
+    {navItems.map((item) => (
+      <li key={item.label}>
+        <Link href={item.href} className="bg-pink-500 text-white text-sm sm:text-base px-2 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-pink-400 transition">
+          {item.label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+  <ContactInfo />
+</nav>
+
+
       {isMenuOpen && (
         <div className="md:hidden bg-pink-100 rounded-b-3xl shadow-md">
           <nav>

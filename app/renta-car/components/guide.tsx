@@ -35,7 +35,7 @@ const Guide = () => {
           ))}
         </div>
         <p className="text-center mt-6 text-pink-600 font-bold">
-          ガジュマルレンタカーで島内の観光スポットを巡りましょう！
+        小豆島ガジュマルレンタカーで島内の観光スポットを巡りましょう！
         </p>
         <div className="text-center mt-4">
           <a 

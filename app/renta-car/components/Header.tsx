@@ -3,22 +3,20 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { FiMenu } from 'react-icons/fi'
-import { MdClose } from 'react-icons/md'
-import { Phone, Mail } from 'lucide-react';
+
 
 const ContactInfo = () => (
-  <div className="bg-pink-500 p-2 rounded-lg">
-    <p className="text-white text-sm font-bold mb-2 text-center">お問い合わせはこちら</p>
-    <div className="flex flex-col items-center">
-      <a href="tel:0120-544-960" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition mb-2">
-        <Phone className="inline-block mr-1 h-4 w-4" />
+  <div className=" p-2 rounded-lg flex flex-col">
+    <div className="bg-pink-500 pb-2 mb-2 rounded-3xl">
+      <p className="text-white text-sm font-bold text-center">お電話はこちら</p>
+      <a href="tel:0120-544-960" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition mt-2 flex items-center justify-center">
         0120-544-960
       </a>
-      <a href="mailto:gajumaru.renta2024@gmail.com" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition">
-        <Mail className="inline-block mr-1 h-4 w-4" />
-        メール
+    </div>
+    <div className="bg-pink-500 pb-2 mb-2 rounded-3xl">
+      <p className="text-white text-sm font-bold text-center mb-1">メールはこちら</p>
+      <a href="mailto:gajumaru.renta2024@gmail.com" className="text-white text-sm px-2 py-1 rounded-full hover:bg-pink-400 transition flex items-center justify-center">
+        gajumaru.renta2024@gmail.com
       </a>
     </div>
   </div>

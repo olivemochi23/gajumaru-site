@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Zen_Kaku_Gothic_New } from 'next/font/google'
+import { Zen_Kaku_Gothic_New, RocknRoll_One } from 'next/font/google'
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap'
+})
+
+const rocknRollOne = RocknRoll_One({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-rocknroll-one',
 })
 
 export const metadata: Metadata = {
@@ -31,8 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={cn(zenKakuGothicNew.className, 'min-h-dvh flex flex-col')}>
-        {children}
+      <body className={cn(zenKakuGothicNew.className, rocknRollOne.variable, 'min-h-dvh flex flex-col')}>        {children}
       </body>
     </html>
   )

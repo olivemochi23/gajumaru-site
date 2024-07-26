@@ -29,9 +29,12 @@ const FormPage = () => {
     specialRequests: ''
   });
 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +47,34 @@ const FormPage = () => {
     }));
   };
 
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    const requiredFields = ['name', 'furigana', 'email', 'tel', 'inquiryType', 'pickupDate', 'returnDate', 'pickupLocation', 'returnLocation', 'licenseType'];
+    let hasError = false;
+  
+    requiredFields.forEach(field => {
+      if (!formData[field as keyof typeof formData]) {
+        newErrors[field] = `${field}を入力してください`;
+        hasError = true;
+      }
+    });
+  
+    if (formData.tel && !/^\d{10,11}$/.test(formData.tel)) {
+      newErrors.tel = '電話番号は10桁または11桁の数字で入力してください';
+      hasError = true;
+    }
+    if (formData.options.length === 0) {
+      newErrors.options = 'オプションを1つ以上選択してください';
+      hasError = true;
+    }
+  
+    setErrors(newErrors);
+    return !hasError;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateForm()) return;
     try {
       const response = await fetch('/api/submit-form', {
         method: 'POST',
@@ -65,6 +94,8 @@ const FormPage = () => {
     }
   };
 
+  const isError = Object.keys(errors).length > 0;
+
   return (
     <Section
       title="レンタカー予約フォーム"
@@ -74,65 +105,73 @@ const FormPage = () => {
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4 mx-4">
         
       <div>
-          <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700">お問い合わせ内容</label>
+          <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700">お問い合わせ内容 <span className="text-red-500">*</span></label>
           <select
             id="inquiryType"
             name="inquiryType"
             value={formData.inquiryType}
             onChange={handleInputChange}
-            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md ${isError ? 'border-red-500' : ''}`}
             required
           >
             <option value="">選択してください</option>
             <option value="予約">予約</option>
             <option value="問い合わせ">問い合わせ</option>
           </select>
+          {errors.inquiryType && <p className="text-red-500 text-sm mt-1">{errors.inquiryType}</p>}
         </div>
 
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">お名前</label>
-          <Input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">お名前 <span className="text-red-500">*</span></label>
+          <Input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
         <div>
-          <label htmlFor="furigana" className="block text-sm font-medium text-gray-700">フリガナ</label>
-          <Input type="text" id="furigana" name="furigana" value={formData.furigana} onChange={handleInputChange} required />
+          <label htmlFor="furigana" className="block text-sm font-medium text-gray-700">フリガナ <span className="text-red-500">*</span></label>
+          <Input type="text" id="furigana" name="furigana" value={formData.furigana} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.furigana && <p className="text-red-500 text-sm mt-1">{errors.furigana}</p>}
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">メールアドレス</label>
-          <Input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">メールアドレス <span className="text-red-500">*</span></label>
+          <Input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
         <div>
-          <label htmlFor="tel" className="block text-sm font-medium text-gray-700">電話番号</label>
-          <Input type="tel" id="tel" name="tel" value={formData.tel} onChange={handleInputChange} required />
+          <label htmlFor="tel" className="block text-sm font-medium text-gray-700">電話番号 <span className="text-red-500">*</span></label>
+          <Input type="tel" id="tel" name="tel" value={formData.tel} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.tel && <p className="text-red-500 text-sm mt-1">{errors.tel}</p>}
         </div>
 
         <div>
-          <label htmlFor="pickupDate" className="block text-sm font-medium text-gray-700">貸出日時</label>
-          <Input type="datetime-local" id="pickupDate" name="pickupDate" value={formData.pickupDate} onChange={handleInputChange} required />
+          <label htmlFor="pickupDate" className="block text-sm font-medium text-gray-700">貸出日時 <span className="text-red-500">*</span></label>
+          <Input type="datetime-local" id="pickupDate" name="pickupDate" value={formData.pickupDate} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.pickupDate && <p className="text-red-500 text-sm mt-1">{errors.pickupDate}</p>}
         </div>
 
         <div>
-          <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700">返却日時</label>
-          <Input type="datetime-local" id="returnDate" name="returnDate" value={formData.returnDate} onChange={handleInputChange} required />
+          <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700">返却日時 <span className="text-red-500">*</span></label>
+          <Input type="datetime-local" id="returnDate" name="returnDate" value={formData.returnDate} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
+          {errors.returnDate && <p className="text-red-500 text-sm mt-1">{errors.returnDate}</p>}
         </div>
 
         <div>
-          <label htmlFor="pickupLocation" className="block text-sm font-medium text-gray-700">出発場所</label>
+          <label htmlFor="pickupLocation" className="block text-sm font-medium text-gray-700">出発場所 <span className="text-red-500">*</span></label>
           <select
             id="pickupLocation"
             name="pickupLocation"
             value={formData.pickupLocation}
             onChange={handleInputChange}
-            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md ${isError ? 'border-red-500' : ''}`}
             required
           >
             <option value="">選択してください</option>
             <option value="池田港">池田港</option>
             <option value="その他">その他</option>
           </select>
+          {errors.pickupLocation && <p className="text-red-500 text-sm mt-1">{errors.pickupLocation}</p>}
           {formData.pickupLocation === 'その他' && (
             <Input
               type="text"
@@ -140,25 +179,26 @@ const FormPage = () => {
               value={formData.pickupLocationOther || ''}
               onChange={handleInputChange}
               placeholder="その他の出発場所を入力"
-              className="mt-2"
+              className={`mt-2 ${isError ? 'border-red-500' : ''}`}
             />
           )}
         </div>
 
         <div>
-          <label htmlFor="returnLocation" className="block text-sm font-medium text-gray-700">返却場所</label>
+          <label htmlFor="returnLocation" className="block text-sm font-medium text-gray-700">返却場所 <span className="text-red-500">*</span></label>
           <select
             id="returnLocation"
             name="returnLocation"
             value={formData.returnLocation}
             onChange={handleInputChange}
-            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md ${isError ? 'border-red-500' : ''}`}
             required
           >
             <option value="">選択してください</option>
             <option value="池田港">池田港</option>
             <option value="その他">その他</option>
           </select>
+          {errors.returnLocation && <p className="text-red-500 text-sm mt-1">{errors.returnLocation}</p>}
           {formData.returnLocation === 'その他' && (
             <Input
               type="text"
@@ -166,14 +206,14 @@ const FormPage = () => {
               value={formData.returnLocationOther || ''}
               onChange={handleInputChange}
               placeholder="その他の返却場所を入力"
-              className="mt-2"
+              className={`mt-2 ${isError ? 'border-red-500' : ''}`}
             />
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">オプション（詳しくは<a href="/renta-car/privacy-policy" className="text-pink-600 hover:text-pink-800">こちら</a>）</label>
-          <div className="mt-2 space-y-2">
+          <label className="block text-sm font-medium text-gray-700">オプション（詳しくは<a href="/renta-car/privacy-policy" className="text-pink-600 hover:text-pink-800">こちら</a>） <span className="text-red-500">*</span></label>
+          <div className={`mt-2 space-y-2 ${isError ? 'border border-red-500 rounded-md p-2' : ''}`}>
             {['チャイルドシート／ジュニアシート', '免責補償制度（スタンダード）', '免責補償制度（フルカバー）', 'オプションなし'].map((option) => (
               <div key={option} className="flex items-center">
                 <Checkbox
@@ -192,6 +232,7 @@ const FormPage = () => {
               </div>
             ))}
           </div>
+          {errors.options && <p className="text-red-500 text-sm mt-1">{errors.options}</p>}
         </div>
 
         <div>
@@ -202,7 +243,6 @@ const FormPage = () => {
             value={formData.driverAge}
             onChange={handleInputChange}
             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
-            required
           >
             <option value="">選択してください</option>
             <option value="21歳未満">21歳未満</option>
@@ -211,13 +251,13 @@ const FormPage = () => {
         </div>
 
         <div>
-          <label htmlFor="licenseType" className="block text-sm font-medium text-gray-700">運転免許証の種類</label>
+          <label htmlFor="licenseType" className="block text-sm font-medium text-gray-700">運転免許証の種類 <span className="text-red-500">*</span></label>
           <select
             id="licenseType"
             name="licenseType"
             value={formData.licenseType}
             onChange={handleInputChange}
-            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md"
+            className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md ${isError ? 'border-red-500' : ''}`}
             required
           >
             <option value="">選択してください</option>
@@ -225,6 +265,7 @@ const FormPage = () => {
             <option value="国際運転免許証">国際運転免許証</option>
             <option value="外国運転免許証（対象国のみ）">外国運転免許証（対象国のみ）</option>
           </select>
+          {errors.licenseType && <p className="text-red-500 text-sm mt-1">{errors.licenseType}</p>}
         </div>
 
         <div>

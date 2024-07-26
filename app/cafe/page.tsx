@@ -27,7 +27,7 @@ const CafePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-pink-50 min-h-screen flex flex-col">
+    <div className="bg-pink-50 min-h-screen flex flex-col font-rocknroll-one">
       <header className="bg-pink-200 p-4 rounded-b-3xl shadow-md">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <div className="flex items-center">
@@ -41,7 +41,7 @@ const CafePage: React.FC = () => {
               />
             </Link>
             <h1 className="text-lg sm:text-xl font-bold text-pink-800 ml-2 sm:ml-4">ガジュマルテラス</h1>
-          </div>
+            </div>
           <div className="flex items-center mt-2 sm:mt-0">
             <nav className="hidden sm:block mr-4">
               <ul className="flex space-x-2 sm:space-x-4">

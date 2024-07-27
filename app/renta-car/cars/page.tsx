@@ -114,23 +114,24 @@ export default function CarsPage() {
       </Section>
 
       <Section
-        title="追加料金"
-        subTitle="オプションおよび特別料金"
-        className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4"
-      >
-        <div className="bg-white rounded-xl overflow-hidden shadow-lg p-6">
-          <ul className="space-y-2">
-            {additionalFees.map((fee) => (
-              <li key={fee.name} className="flex justify-between items-center">
-                <span>{fee.name}</span>
-                <span className="font-semibold">¥{fee.price.toLocaleString()} ({fee.unit})</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
+  title="追加料金"
+  subTitle="オプションおよび特別料金"
+  className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4"
+>
+  <div className="bg-white rounded-xl overflow-hidden shadow-lg p-6">
+    <ul className="space-y-2">
+      {additionalFees.map((fee) => (
+        <li key={fee.name} className="flex justify-between items-center">
+          <span>{fee.name}</span>
+          <span className="font-semibold">¥{fee.price.toLocaleString()} ({fee.unit})</span>
+        </li>
+      ))}
+    </ul>
+    <p className="mt-4">免責補償制度については<Link href="/renta-car/privacy-policy" className="text-pink-600 hover:text-pink-800">こちら</Link>をご覧ください。</p>
+  </div>
+</Section>
 
-      <Section
+<Section
         title="配車・お引き取り費用"
         subTitle="各港および主要ホテルへの配車・引き取りサービス"
         className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4"
@@ -162,6 +163,7 @@ export default function CarsPage() {
               </tr>
             </tbody>
           </table>
+          <p className="mt-4 text-sm text-gray-600">港以外の配車、引き取り費用は弊社スタッフにお尋ね下さい。</p>
         </div>
       </Section>
 
@@ -171,6 +173,10 @@ export default function CarsPage() {
         className="bg-pink-200 p-4 sm:p-8 rounded-3xl my-8 mx-4"
       >
         <div className="bg-white rounded-xl overflow-hidden shadow-lg p-6">
+
+        <h4 className="font-bold text-lg mb-2 text-pink-600">燃料について</h4>
+          <p className="mb-4">料金にはガソリン代が含まれております。給油を気にせず心ゆくまで島旅をお楽しみください。</p>
+
           <h4 className="font-bold text-lg mb-2 text-pink-600">キャンセル料金</h4>
           <ul className="list-disc list-inside mb-4">
             <li>前日又は前々日: 基本料金の30%</li>

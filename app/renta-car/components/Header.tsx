@@ -35,17 +35,17 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 700);
+      setIsMobile(window.innerWidth < 900);
     };
-
+  
     window.addEventListener('resize', handleResize);
     handleResize(); // 初期状態を設定
-
+  
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <header className="bg-pink-300 py-2 sm:py-4 md:py-6 lg:py-8">
+    <header className="bg-pink-300 py-2 sm:py-4 md:py-6 lg:py-8 relative">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/renta-car" className="flex items-center">
           <Image
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
         </Link>
         {isMobile && (
           <button
-            className="text-white"
+            className="text-white z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -91,9 +91,9 @@ const Header: React.FC = () => {
           <ContactInfo />
         </nav>
       )}
-
+  
       {isMobile && isMenuOpen && (
-        <div className="bg-pink-100 rounded-b-3xl shadow-md">
+        <div className="bg-pink-100 shadow-md absolute top-full left-0 right-0 z-40">
           <nav>
             <ul className="flex flex-col items-center gap-2 py-2">
               {navItems.map((item) => (

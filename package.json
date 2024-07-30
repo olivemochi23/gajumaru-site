@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@edge-csrf/nextjs": "^2.3.0-rc1",
@@ -41,6 +42,7 @@
     "newt-client-js": "^3.3.3",
     "next": "^14.2.3",
     "next-recaptcha-v3": "^1.4.1",
+    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.14",
     "react": "^18.3.1",
     "react-dom": "^18",

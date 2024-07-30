@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://gajumaru0403.com
+
+# Sitemaps
+Sitemap: https://gajumaru0403.com/sitemap.xml

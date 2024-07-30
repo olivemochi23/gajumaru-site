@@ -58,7 +58,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <div className="relative">
       <header className="px-4 sm:px-6 lg:px-8 bg-transparent h-24 flex items-center justify-between font-bold absolute top-0 left-0 right-0 z-10">
-
+      <meta name="google-site-verification" content="Mna6vuWSA8aWWeFj2l_hBv_Umhzkldck9yctG230W9k" />
         <div className="flex items-center mt-8">
         <div onClick={scrollToTop} className="cursor-pointer">
           <Image

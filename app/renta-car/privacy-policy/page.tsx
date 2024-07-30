@@ -116,6 +116,46 @@ const PrivacyPolicyPage = () => {
   </table>
 </div>
 
+<h4 className="font-bold text-lg mb-2 text-pink-600">（スタンダード）免責補償制度加入時、自損事故 ※単独事故、キズ・ヘコミ・破損含む</h4>
+<div className="overflow-x-auto">
+  <table className="w-full mb-4 border-collapse">
+    <thead>
+      <tr className="bg-pink-100">
+        <th className="border border-pink-300 px-4 py-2 text-left">補償内容</th>
+        <th className="border border-pink-300 px-4 py-2 text-center">自走不可能な場合</th>
+        <th className="border border-pink-300 px-4 py-2 text-center">自走して予定の営業店に返還された場合</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">対物補償(免責額)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">車両補償(免責額)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">最大50,000円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">最大50,000円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">休業補償(ノンオペレーションチャージ・NOC)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">50,000円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">20,000円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">レッカー代(現地作業代を含む)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">実費</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">なし</td>
+      </tr>
+      <tr className="hover:bg-pink-50 font-bold">
+        <td className="border border-pink-300 px-4 py-2">お客様ご負担合計</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">最大100,000円+レッカー代</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">最大70,000円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <h4 className="font-bold text-lg mb-2 text-pink-600">スタンダード 免責補償制度の加入料</h4>
 <p className="mb-4">1日24時間 1,100円でご加入いただけます。</p>
 
@@ -150,6 +190,46 @@ const PrivacyPolicyPage = () => {
         <td className="border border-pink-300 px-4 py-2">レッカー代</td>
         <td className="border border-pink-300 px-4 py-2 text-center">実費</td>
         <td className="border border-pink-300 px-4 py-2 text-center">なし</td>
+      </tr>
+      <tr className="hover:bg-pink-50 font-bold">
+        <td className="border border-pink-300 px-4 py-2">お客様ご負担合計</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4 className="font-bold text-lg mb-2 text-pink-600">（フルカバー）免責補償制度加入時、自損事故 ※単独事故、キズ・ヘコミ・破損含む</h4>
+<div className="overflow-x-auto">
+  <table className="w-full mb-4 border-collapse">
+    <thead>
+      <tr className="bg-pink-100">
+        <th className="border border-pink-300 px-4 py-2 text-left">補償内容</th>
+        <th className="border border-pink-300 px-4 py-2 text-center">自走不可能な場合</th>
+        <th className="border border-pink-300 px-4 py-2 text-center">自走して予定の営業店に返還された場合</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">対物補償(免責額)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">車両補償(免責額)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">休業補償(ノンオペレーションチャージ・NOC)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+      </tr>
+      <tr className="hover:bg-pink-50">
+        <td className="border border-pink-300 px-4 py-2">レッカー代(現地作業代を含む)</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
+        <td className="border border-pink-300 px-4 py-2 text-center">0円</td>
       </tr>
       <tr className="hover:bg-pink-50 font-bold">
         <td className="border border-pink-300 px-4 py-2">お客様ご負担合計</td>

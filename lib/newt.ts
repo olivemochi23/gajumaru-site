@@ -1,3 +1,4 @@
+/*
 // サーバーサイドでのみ実行されることを保証するためのインポート
 import 'server-only'
 
@@ -34,3 +35,5 @@ export const getArticles = cache<() => Promise<Article[]>>(async () => {
     // 取得したアイテムをArticle型の配列として返す
     return items as Article[]
 })
+
+*/

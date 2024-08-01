@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Zen_Kaku_Gothic_New, RocknRoll_One } from 'next/font/google'
+import Script from 'next/script'
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ['400', '700'],
@@ -38,7 +39,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={cn(zenKakuGothicNew.className, rocknRollOne.variable, 'min-h-dvh flex flex-col')}>        {children}
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16659582141"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16659582141');
+          `}
+        </Script>
+      </head>
+      <body className={cn(zenKakuGothicNew.className, rocknRollOne.variable, 'min-h-dvh flex flex-col')}>
+        {children}
       </body>
     </html>
   )

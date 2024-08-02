@@ -18,7 +18,7 @@ const rocknRollOne = RocknRoll_One({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gajumaru-site.vercel.app/'), // ここにあなたのドメインを設定します
+  metadataBase: new URL('https://gajumaru0403.com/'), // ここにあなたのドメインを設定します
   title: "株式会社ガジュマル - カフェ、レンタカー",
   description: "小豆島で最高のリゾート体験を提供する観光事業を行っている会社です。小豆島観光におすすめのBMWMINIのオープンカーがレンタルできるレンタカーや南国リゾート風のカフェを営業しているのでぜひご利用ください！",
   icons: {

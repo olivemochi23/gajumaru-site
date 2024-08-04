@@ -6,7 +6,7 @@ import FloatingReservationButton from '@/app/renta-car/components/FloatingReserv
 import Header from '@/app/renta-car/components/Header'
 import Hero from '@/app/renta-car/components/Hero'
 import Access from '@/app/renta-car/components/Access'
-import Link from 'next/link'
+import Info from '@/app/renta-car/components/info'
 import Contact from '@/app/renta-car/components/Contact'
 import Announcements from '@/app/renta-car/components/Announcements'
 
@@ -23,9 +23,9 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="announcements" className="w-screen px-0 relative my-8">
+        <section id="info" className="w-screen px-0 relative my-8">
           <div className="relative z-10">
-            <Announcements />
+            <Info />
           </div>
         </section>
 

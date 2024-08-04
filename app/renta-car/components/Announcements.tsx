@@ -20,7 +20,7 @@ const Announcements = () => {
   <h4 className="text-lg font-bold mt-8 mb-3 text-pink-600">ハイシーズン料金</h4>
   <p className="mb-4">
     誠に勝手ながら、次の期間は夏季ハイシーズン料金として、24時間毎700円を頂戴しております。<br />
-    御料所のほどよろしくお願いいたします。
+    ご了承のほどよろしくお願いいたします。
   </p>
 
   <p className="font-bold mb-3">7月27日（土）より8月25日（日）まで</p>

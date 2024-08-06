@@ -4,7 +4,7 @@ import Link from 'next/link';
 const MainCar = () => {
   const car = {
     id: 1,
-    src: '/mini.jpg',
+    src: '/レンタカー.jpg',
     alt: 'BMV Mini オープンカー',
     name: 'オープンカー',
     description: 'BMW Miniのオープンカーを小豆島で初めて採用しました。まるで、小豆島の自然の中に溶け込んだかのような走りが楽しめます。折角のご旅行、移動中も楽しまなきゃ勿体ないです！',

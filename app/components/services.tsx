@@ -30,7 +30,7 @@ export default function Services() {
   <div className="border relative rounded-3xl p-6 shadow space-y-3 bg-white hover:shadow-lg transition-shadow duration-300">
     <div className="aspect-video bg-muted relative">
       <Image
-        src="/レンタカー.jpeg"
+        src="/レンタカー.jpg"
         alt="レンタカー"
         layout="responsive"
         width={500}

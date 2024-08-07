@@ -22,7 +22,6 @@ oauth2Client.setCredentials({
 
 interface Formdata {
   name: string;
-  furigana: string;
   email: string;
   tel: string;
   inquiryType: string;
@@ -30,14 +29,9 @@ interface Formdata {
   returnDate: string;
   pickupLocation: string;
   returnLocation: string;
-  carTypes: string[];
   remarks: string;
   pickupLocationOther?: string;
   returnLocationOther?: string;
-  options?: string[];
-  driverAge: string;
-  licenseType: string;
-  specialRequests?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -118,10 +112,6 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.name}</td>
           </tr>
           <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">フリガナ</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.furigana}</td>
-          </tr>
-          <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">メールアドレス</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.email}</td>
           </tr>
@@ -150,24 +140,8 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}</td>
           </tr>
           <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">車種</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.carTypes.join(', ') || 'なし'}</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">運転者の年齢</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.driverAge}</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">運転免許証の種類</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.licenseType}</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">オプション</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.options?.join(', ') || 'なし'}</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">特記事項・ご要望</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.specialRequests || 'なし'}</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">備考</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.remarks || 'なし'}</td>
           </tr>
         </table>
 

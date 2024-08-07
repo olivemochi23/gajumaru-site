@@ -32,7 +32,9 @@ interface Formdata {
   remarks: string;
   pickupLocationOther?: string;
   returnLocationOther?: string;
+  specialRequests: string;
 }
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -139,9 +141,9 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">返却場所</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}</td>
           </tr>
-          <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">備考</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">${formData.remarks || 'なし'}</td>
+           <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項・ご要望</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.specialRequests || 'なし'}</td>
           </tr>
         </table>
 

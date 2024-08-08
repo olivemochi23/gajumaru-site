@@ -21,7 +21,7 @@ const carTypes: CarType[] = [
   {
     id: 'mini-convertible',  // この行を追加
     name: 'BMW Mini コンバーチブル',
-    capacity: 5,
+    capacity: 4,
     image: '/レンタカー.jpg',
     prices: {
       sixHours: 9900,

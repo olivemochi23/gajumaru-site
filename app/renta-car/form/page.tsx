@@ -14,12 +14,12 @@ const FormPage = () => {
     furigana: '',
     email: '',
     tel: '',
+    carType: '',
     inquiryType: '',
     pickupDate: '',
     returnDate: '',
     pickupLocation: '',
     returnLocation: '',
-    carTypes: [],
     remarks: '',
     pickupLocationOther: '',
     returnLocationOther: '',
@@ -134,6 +134,24 @@ const FormPage = () => {
     <Input type="tel" id="tel" name="tel" value={formData.tel} onChange={handleInputChange} required className={isError ? 'border-red-500' : ''} />
     {errors.tel && <p className="text-red-500 text-sm mt-1">{errors.tel}</p>}
   </div>
+
+  <div>
+  <label htmlFor="carType" className="block text-sm font-medium text-gray-700">車種のご希望 <span className="text-red-500">*</span></label>
+  <select
+    id="carType"
+    name="carType"
+    value={formData.carType}
+    onChange={handleInputChange}
+    className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm rounded-md ${isError ? 'border-red-500' : ''}`}
+    required
+  >
+    <option value="">選択してください</option>
+    <option value="軽自動車">軽自動車（4人）</option>
+    <option value="コンパクト">コンパクト（5人）</option>
+    <option value="MINIオープン">MINIオープン（4人）</option>
+  </select>
+  {errors.carType && <p className="text-red-500 text-sm mt-1">{errors.carType}</p>}
+</div>
 
   <div>
     <label htmlFor="pickupDate" className="block text-sm font-medium text-gray-700">貸出日時 <span className="text-red-500">*</span></label>

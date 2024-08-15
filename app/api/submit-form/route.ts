@@ -122,9 +122,9 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.tel}</td>
           </tr>
           <tr>
-  <td style="border: 1px solid #ddd; padding: 8px;">車種</td>
-  <td style="border: 1px solid #ddd; padding: 8px;">${formData.carType}</td>
-</tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">車種</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">${formData.carType}</td>
+          </tr>
           <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">お問い合わせ内容</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.inquiryType}</td>

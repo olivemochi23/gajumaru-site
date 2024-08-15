@@ -41,9 +41,7 @@ const FormPage = () => {
     const { name, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      carTypes: checked
-        ? [...prev.carTypes, name]
-        : prev.carTypes.filter(type => type !== name)
+      carType: checked ? name : ''
     }));
   };
 

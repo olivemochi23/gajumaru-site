@@ -37,14 +37,6 @@ const FormPage = () => {
     setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      carType: checked ? name : ''
-    }));
-  };
-
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
     const requiredFields = ['name', 'email', 'tel', 'inquiryType', 'pickupDate', 'returnDate', 'pickupLocation', 'returnLocation'];

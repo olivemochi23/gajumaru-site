@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
+import { OAuth2Client } from 'google-auth-library';
 
 console.log('環境変数チェック:');
 console.log('EMAIL_USER:', process.env.EMAIL_USER);
@@ -10,10 +11,11 @@ console.log('GMAIL_REFRESH_TOKEN:', process.env.GMAIL_REFRESH_TOKEN ? '設定さ
 
 const OAuth2 = google.auth.OAuth2;
 
-const oauth2Client = new OAuth2(
+const oauth2Client: OAuth2Client = new OAuth2(
   process.env.GMAIL_CLIENT_ID,
   process.env.GMAIL_CLIENT_SECRET,
-  'https://developers.google.com/oauthplayground'
+  // リダイレクト URI は、アプリケーションの実際のURLに置き換えてください。
+  'https://gajumaru0403.com/' 
 );
 
 oauth2Client.setCredentials({
@@ -68,12 +70,12 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
       oauth2Client.getAccessToken((err, token) => {
         if (err) {
           console.error('アクセストークン取得エラー:', err);
-          reject('Failed to create access token');
+          reject(err); // エラーオブジェクトをreject
         } else if (token) {
           console.log('アクセストークン取得成功');
           resolve(token);
         } else {
-          reject('No token received');
+          reject(new Error('No token received')); // エラーオブジェクトをreject
         }
       });
     });
@@ -175,8 +177,8 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
       console.error('エラーメッセージ:', error.message);
       console.error('エラースタック:', error.stack);
     }
-    if ('response' in (error as any)) {
-      console.error('SMTP応答:', (error as any).response);
+    if ('response' in error) {
+      console.error('SMTP応答:', error.response);
     }
     return { success: false, error: error as Error };
   }

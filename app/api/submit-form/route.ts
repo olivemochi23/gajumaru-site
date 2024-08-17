@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 
+// 環境変数の確認
 console.log('環境変数チェック:');
 console.log('EMAIL_USER:', process.env.EMAIL_USER);
 console.log('GMAIL_CLIENT_ID:', process.env.GMAIL_CLIENT_ID ? '設定されています' : '設定されていません');
@@ -15,12 +16,36 @@ const oauth2Client: OAuth2Client = new OAuth2(
   process.env.GMAIL_CLIENT_ID,
   process.env.GMAIL_CLIENT_SECRET,
   // リダイレクト URI は、アプリケーションの実際のURLに置き換えてください。
-  'https://gajumaru0403.com/' 
+  'https://gajumaru0403.com/'
 );
 
-oauth2Client.setCredentials({
-  refresh_token: process.env.GMAIL_REFRESH_TOKEN
-});
+// アクセストークンとリフレッシュトークンの管理
+let accessToken: string | null = null;
+let accessTokenExpiry: number | null = null;
+
+const getAccessToken = async (): Promise<string> => {
+  // アクセストークンが有効期限内であれば再利用
+  if (accessToken && accessTokenExpiry && accessTokenExpiry > Date.now()) {
+    return accessToken;
+  }
+
+  // リフレッシュトークンを使用して新しいアクセストークンを取得
+  if (process.env.GMAIL_REFRESH_TOKEN) {
+    oauth2Client.setCredentials({ refresh_token: process.env.GMAIL_REFRESH_TOKEN });
+    try {
+      const { credentials } = await oauth2Client.refreshAccessToken();
+      accessToken = credentials.access_token;
+      accessTokenExpiry = (credentials.expiry_date || 0);
+      console.log('アクセストークンを更新しました');
+      return accessToken as string; // アクセストークンが確実に存在することを保証
+    } catch (error) {
+      console.error('アクセストークンの更新に失敗しました:', error);
+      throw error;
+    }
+  } else {
+    throw new Error('リフレッシュトークンが設定されていません');
+  }
+};
 
 interface Formdata {
   name: string;
@@ -66,19 +91,8 @@ export async function POST(request: NextRequest) {
 
 const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?: Error }> => {
   try {
-    const accessToken = await new Promise<string>((resolve, reject) => {
-      oauth2Client.getAccessToken((err, token) => {
-        if (err) {
-          console.error('アクセストークン取得エラー:', err);
-          reject(err); // エラーオブジェクトをreject
-        } else if (token) {
-          console.log('アクセストークン取得成功');
-          resolve(token);
-        } else {
-          reject(new Error('No token received')); // エラーオブジェクトをreject
-        }
-      });
-    });
+    // アクセストークンを取得 (自動更新を含む)
+    const accessToken = await getAccessToken();
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -97,7 +111,7 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
     const autoReplyOptions = {
       from: process.env.EMAIL_USER,
       to: formData.email,
-      cc: 'gajumaru.renta2024@gmail.com',
+      cc: 'gajumaru.renta2024@gmail.com', // 必要に応じて変更
       subject: 'レンタカー予約・お問い合わせ受付完了',
       html: `
         <h2>${formData.name} 様</h2>
@@ -147,7 +161,7 @@ const sendEmail = async (formData: Formdata): Promise<{ success: boolean; error?
             <td style="border: 1px solid #ddd; padding: 8px;">返却場所</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.returnLocation}${formData.returnLocationOther ? ` (${formData.returnLocationOther})` : ''}</td>
           </tr>
-           <tr>
+          <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">特記事項・ご要望</td>
             <td style="border: 1px solid #ddd; padding: 8px;">${formData.specialRequests || 'なし'}</td>
           </tr>

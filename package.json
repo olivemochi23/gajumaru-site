@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@auth/core": "^0.34.2",
     "@edge-csrf/nextjs": "^2.3.0-rc1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",

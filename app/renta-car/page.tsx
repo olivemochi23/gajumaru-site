@@ -1,4 +1,4 @@
-export const revalidate = 600 
+export const revalidate = 60
 import Footer from '@/app/renta-car/components/Footer'
 import MainCar from '@/app/renta-car/components/mainCar'
 import Guide from '@/app/renta-car/components/guide'

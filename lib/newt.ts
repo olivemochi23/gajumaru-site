@@ -21,16 +21,13 @@ const client = createClient({
 })
 
 // 記事を取得する関数をエクスポートし、Reactのキャッシュ機能を適用
-export const getArticles = cache<() => Promise<Article[]>>(async () => {
-    // Newtクライアントを使用してコンテンツを取得
-    const { items } = await client.getContents({
-      appUid: 'updates',
-      modelUid: 'article',
-      query: {
-        // 取得するフィールドを指定
-        select: ['_id', 'title', 'slug', 'body'],
-      },
-    })
-    // 取得したアイテムをArticle型の配列として返す
-    return items as Article[]
+export const getArticles = cache(async () => {
+  const { items } = await client.getContents({
+    appUid: process.env.NEWT_APP_UID + '',
+    modelUid: process.env.NEWT_MODEL_UID + '',
+    query: {
+      select: ['_id', 'title', 'slug', 'body', '_sys'],
+    },
+  })
+  return items as Article[]
 })

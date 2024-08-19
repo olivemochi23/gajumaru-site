@@ -1,3 +1,4 @@
+export const revalidate = 600 
 import Footer from '@/app/renta-car/components/Footer'
 import MainCar from '@/app/renta-car/components/mainCar'
 import Guide from '@/app/renta-car/components/guide'
@@ -8,7 +9,6 @@ import Hero from '@/app/renta-car/components/Hero'
 import Access from '@/app/renta-car/components/Access'
 import Info from '@/app/renta-car/components/info'
 import Contact from '@/app/renta-car/components/Contact'
-import Announcements from '@/app/renta-car/components/Announcements'
 
 
 

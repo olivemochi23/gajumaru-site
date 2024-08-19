@@ -4,9 +4,11 @@ import type { Metadata } from 'next'
 import Section from './section'
 
 export const metadata: Metadata = {
-  title: 'Newt・Next.jsブログ',
-  description: 'NewtとNext.jsを利用したブログです',
+  title: '小豆島ガジュマルレンタカー',
+  description: '小豆島ガジュマルレンタカーからのお知らせです。',
 }
+
+export const revalidate = 3600 // 1時間ごとに再検証
 
 export default async function Info() {
   const articles = await getArticles()

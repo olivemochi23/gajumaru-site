@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: '小豆島ガジュマルレンタカーからのお知らせです。',
 }
 
-export const revalidate = 3600 // 1時間ごとに再検証
+export const revalidate = 60 
 
 export default async function Info() {
   const articles = await getArticles()

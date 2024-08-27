@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
+import { OAuth2Client } from 'google-auth-library';
 
 const OAuth2 = google.auth.OAuth2;
 
@@ -14,9 +15,34 @@ oauth2Client.setCredentials({
   refresh_token: process.env.GMAIL_REFRESH_TOKEN
 });
 
+async function refreshAccessToken() {
+  try {
+    const { credentials } = await oauth2Client.refreshAccessToken();
+    const { access_token, expiry_date, refresh_token } = credentials;
+
+    if (refresh_token) {
+      process.env.GMAIL_REFRESH_TOKEN = refresh_token;
+      // ここで新しいリフレッシュトークンを永続化する処理を追加（例：データベースに保存）
+    }
+
+    return { access_token, expiry_date };
+  } catch (error) {
+    console.error('リフレッシュトークンの更新に失敗しました:', error);
+    throw error;
+  }
+}
+
 async function getAccessToken() {
-  const { token } = await oauth2Client.getAccessToken();
-  return token;
+  try {
+    const { token } = await oauth2Client.getAccessToken();
+    return token;
+  } catch (error) {
+    if (error.message === 'invalid_grant') {
+      const { access_token } = await refreshAccessToken();
+      return access_token;
+    }
+    throw error;
+  }
 }
 
 export async function POST(req: NextRequest) {
